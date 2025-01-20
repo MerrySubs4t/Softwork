@@ -54,7 +54,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/UI/Xelora/Example.lua"))()
 ```
 
-<h1>7.Xelora 2</h1>
+<h1>8.Xelora 2</h1>
 
 ![inc](https://cdn.discordapp.com/attachments/1221930856394919937/1330899739696300114/image.png?ex=678fa878&is=678e56f8&hm=04b7dddaa097cfff0244254ce382c6855e5369b422696fe04037f897730965f6&)
 
@@ -62,10 +62,26 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/UI/Xelora-2/Example.lua"))()
 ```
 
-<h1>7.Xelora 3</h1>
+<h1>9.Xelora 3</h1>
 
 ![inc](https://cdn.discordapp.com/attachments/1221930856394919937/1330899951361720490/image.png?ex=678fa8ab&is=678e572b&hm=70a732c46c0826b4bf710044ffe2fea595bc81f4b7aa3da58733564522d47b84&)
 
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/UI/Xelora-3/Example.lua"))()
+```
+
+<h1>10.Nothing</h1>
+
+![inc](https://cdn.discordapp.com/attachments/1221930856394919937/1330901068296622202/image.png?ex=678fa9b5&is=678e5835&hm=805b8ba5b34e1088cb79372048baf9a6ab65e378f2eab1d626cac79767920846&)
+
+```lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/UI/Nothing/Example.lua"))()
+```
+
+<h1>11.Maclip</h1>
+
+![inc](https://cdn.discordapp.com/attachments/1221930856394919937/1330907133570715659/image.png?ex=678faf5b&is=678e5ddb&hm=67a90d6975838f034b131941082de9b6ea1b058550556befc37e772c4e4ba5bf&)
+
+```lua
+loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/UI/Maclip/Example.lua"))()
 ```
