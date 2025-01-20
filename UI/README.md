@@ -1,1 +1,1 @@
-![Fluent]([https://ลิงก์ของรูปภาพ.com](https://cdn.discordapp.com/attachments/1221930856394919937/1330889516525031507/image.png?ex=678f9ef3&is=678e4d73&hm=eaa3011f1baa866fe688c67b253b7a212149e4434d767ae2293bc9d875238d42&))
+![Fluent](https://ลิงก์ของรูปภาพ.com](https://cdn.discordapp.com/attachments/1221930856394919937/1330889516525031507/image.png?ex=678f9ef3&is=678e4d73&hm=eaa3011f1baa866fe688c67b253b7a212149e4434d767ae2293bc9d875238d42&))
