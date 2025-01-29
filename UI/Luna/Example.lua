@@ -1,4 +1,4 @@
-Luna = loadstring(game:HttpGet("https://paste.ee/r/WSCKThwW"))()
+Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/UI/Luna/Source.lua"))()
 local Window = Luna:CreateWindow({
 	Name = "Luna Example Window",
 	Subtitle = "Test",
