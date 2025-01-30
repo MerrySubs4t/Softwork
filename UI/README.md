@@ -48,7 +48,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/
 
 ## 7.Xelora 1
 
-![inc4](https://cdn.discordapp.com/attachments/1221930856394919937/1330898221362315365/image.png?ex=678fa70e&is=678e558e&hm=1d785c19710dd0eaa249a621112efaa1d87284b7dc5b3d8d955d79fc0273b405&)
+![inc4](https://cdn.discordapp.com/attachments/1221930856394919937/1330898221362315365/image.png?ex=679c2d4e&is=679adbce&hm=e2b0e491d2107fa31384f663bb30f186e96f15431d712701f4f6165ef386c521&)
 
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/UI/Xelora/Example.lua"))()
