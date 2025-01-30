@@ -1,0 +1,11 @@
+EmojiModule = {}
+EmojiModule.emojis = {
+	Green = "🟢",
+	Red = "❌"
+}
+
+function EmojiModule:GetEmoji(name)
+	return self.emojis[name] or "❓"
+end
+
+return EmojiModule
