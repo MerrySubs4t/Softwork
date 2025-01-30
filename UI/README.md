@@ -16,7 +16,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/
 
 ## 3.Init - C
 
-![inc1](https://cdn.discordapp.com/attachments/1221930856394919937/1330890695283572797/image.png?ex=678fa00c&is=678e4e8c&hm=94729a7a392ba7b23cd9553b3e999ca14b045de23e52b53c7771cc1f6e4d1928&)
+![inc1](https://cdn.discordapp.com/attachments/1221930856394919937/1330890695283572797/image.png?ex=679c264c&is=679ad4cc&hm=0f63ab363dcaaf78bb89ff75fe3dc4572ab22cefeffbeb7dfcee231810f11ac0&)
 
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/UI/Init-C/Module.lua"))()
