@@ -1,6 +1,6 @@
 EmojiModule = {}
 EmojiModule.emojis = {
-	Green = "🟢",
+	Green = "✅",
 	Red = "❌"
 }
 
