@@ -1,7 +1,12 @@
 EmojiModule = {}
 EmojiModule.emojis = {
 	Green = "✅",
-	Red = "❌"
+	Red = "❌",
+	Chill = "🍃",
+	Xmas = "⛄",
+	Halloween = "🎃",
+	Valentine = "💝",
+	Newyear = "🎆"
 }
 
 function EmojiModule:GetEmoji(name)
