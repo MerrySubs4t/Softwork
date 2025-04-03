@@ -195,7 +195,7 @@ function Fetching:Window(info)
 	ImageLabel_11.BorderColor3 = Color3.fromRGB(0,0,0)
 	ImageLabel_11.BorderSizePixel = 0
 	ImageLabel_11.Position = UDim2.new(0.5, 0,0.5, 0)
-	ImageLabel_11.Size = UDim2.new(1, 120,1, 20)
+	ImageLabel_11.Size = UDim2.new(1, 120,1, 0)
 	ImageLabel_11.Image = GetIcon(104034982402252)
 	ImageLabel_11.ImageTransparency = 0.5
 	ImageLabel_11.ScaleType = Enum.ScaleType.Crop
