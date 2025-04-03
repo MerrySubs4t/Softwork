@@ -131,24 +131,24 @@ function Fetching:Window(info)
 	local CloseUI = Instance.new("TextButton")
 	local UICorner_1 = Instance.new("UICorner")
 	local Icon_1 = Instance.new("Frame")
-	local UICorner_3 = Instance.new("UICorner")
 	local ImageLabel_1 = Instance.new("ImageLabel")
 
 
 	CloseUI.Name = "CloseUI"
 	CloseUI.Parent = ScreenUI
 	CloseUI.AnchorPoint = Vector2.new(0, 1)
-	CloseUI.BackgroundColor3 = Color3.fromRGB(22,22,22)
+	CloseUI.BackgroundColor3 = Color3.fromRGB(0,0,0)
 	CloseUI.BorderColor3 = Color3.fromRGB(0,0,0)
 	CloseUI.BorderSizePixel = 0
 	CloseUI.Position = UDim2.new(0.00999999978, 0,0.99000001, 0)
 	CloseUI.Size = UDim2.new(0, 50,0, 50)
+	CloseUI.BackgroundTransparency = 0.2
 	CloseUI.Text = ""
 
 	lak(CloseUI)
 
 	UICorner_1.Parent = CloseUI
-	UICorner_1.CornerRadius = UDim.new(1,0)
+	UICorner_1.CornerRadius = UDim.new(0,5)
 
 	Icon_1.Name = "Icon"
 	Icon_1.Parent = CloseUI
@@ -156,9 +156,7 @@ function Fetching:Window(info)
 	Icon_1.BorderColor3 = Color3.fromRGB(0,0,0)
 	Icon_1.BorderSizePixel = 0
 	Icon_1.Size = UDim2.new(0, 50,0, 50)
-
-	UICorner_3.Parent = Icon_1
-	UICorner_3.CornerRadius = UDim.new(1,0)
+	Icon_1.BackgroundTransparency = 1
 
 	ImageLabel_1.Parent = Icon_1
 	ImageLabel_1.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -169,6 +167,7 @@ function Fetching:Window(info)
 	ImageLabel_1.Position = UDim2.new(0.5, 0,0.5, 0)
 	ImageLabel_1.Size = UDim2.new(0, 45,0, 45)
 	ImageLabel_1.Image = GetIcon(Icon)
+	ImageLabel_1.ImageTransparency = 0
 
 	local Background_1 = Instance.new("Frame")
 	local UICorner_1 = Instance.new("UICorner")
@@ -186,6 +185,32 @@ function Fetching:Window(info)
 	Background_1.BorderSizePixel = 0
 	Background_1.Position = UDim2.new(0.5, 0,0.5, 0)
 	Background_1.Size = Size
+	
+	
+	local ImageLabel_11 = Instance.new("ImageLabel")
+	ImageLabel_11.Parent = Background_1
+	ImageLabel_11.AnchorPoint = Vector2.new(0.5, 0.5)
+	ImageLabel_11.BackgroundColor3 = Color3.fromRGB(255,255,255)
+	ImageLabel_11.BackgroundTransparency = 1
+	ImageLabel_11.BorderColor3 = Color3.fromRGB(0,0,0)
+	ImageLabel_11.BorderSizePixel = 0
+	ImageLabel_11.Position = UDim2.new(0.5, 0,0.5, 0)
+	ImageLabel_11.Size = UDim2.new(1, 120,1, 20)
+	ImageLabel_11.Image = GetIcon(104034982402252)
+	ImageLabel_11.ImageTransparency = 0.5
+	ImageLabel_11.ScaleType = Enum.ScaleType.Crop
+	
+	local ImageLabel_12 = Instance.new("ImageLabel")
+	ImageLabel_12.Parent = Background_1
+	ImageLabel_12.AnchorPoint = Vector2.new(0.5, 0.5)
+	ImageLabel_12.BackgroundColor3 = Color3.fromRGB(255,255,255)
+	ImageLabel_12.BackgroundTransparency = 1
+	ImageLabel_12.BorderColor3 = Color3.fromRGB(0,0,0)
+	ImageLabel_12.BorderSizePixel = 0
+	ImageLabel_12.Position = UDim2.new(0.5, 0,0.55, 0)
+	ImageLabel_12.Size = UDim2.new(0, 300,0, 300)
+	ImageLabel_12.Image = GetIcon(Icon)
+	ImageLabel_12.ImageTransparency = 0.75
 
 	Shadow.Parent = Background_1
 	Shadow.Name = "DropShadow"
@@ -270,8 +295,8 @@ function Fetching:Window(info)
 	Hub_1.BackgroundTransparency = 1
 	Hub_1.BorderColor3 = Color3.fromRGB(0,0,0)
 	Hub_1.BorderSizePixel = 0
-	Hub_1.Position = UDim2.new(0.0299999993, 0,0.0799999982, 0)
-	Hub_1.Size = UDim2.new(0, 45,0, 45)
+	Hub_1.Position = UDim2.new(0.0275, 0,0.0799999982, 0)
+	Hub_1.Size = UDim2.new(0, 55,0, 55)
 
 	UIListLayout_6.Parent = Hub_1
 	UIListLayout_6.Padding = UDim.new(0,10)
@@ -285,7 +310,7 @@ function Fetching:Window(info)
 	Logo_1.BackgroundTransparency = 1
 	Logo_1.BorderColor3 = Color3.fromRGB(0,0,0)
 	Logo_1.BorderSizePixel = 0
-	Logo_1.Size = UDim2.new(0, 45,0, 45)
+	Logo_1.Size = UDim2.new(1,0,1,0)
 	Logo_1.Image = GetIcon(Icon)
 	local Tablist_1 = Instance.new("Frame")
 	local ScrollingFrame_1 = Instance.new("ScrollingFrame")
@@ -660,7 +685,8 @@ function Fetching:Window(info)
 
 			Section_1.Name = "Section"
 			Section_1.Parent = GetSide(Side)
-			Section_1.BackgroundColor3 = Color3.fromRGB(18,18,18)
+			Section_1.BackgroundColor3 = Color3.fromRGB(23,23,23)
+			Section_1.BackgroundTransparency = 0.2
 			Section_1.BorderColor3 = Color3.fromRGB(0,0,0)
 			Section_1.BorderSizePixel = 0
 			Section_1.Position = UDim2.new(0.0049999305, 0,0.0250000004, 0)
@@ -831,7 +857,7 @@ function Fetching:Window(info)
 				Toggle.BorderColor3 = Color3.fromRGB(0,0,0)
 				Toggle.BorderSizePixel = 0
 				Toggle.LayoutOrder = 2
-				Toggle.Size = UDim2.new(1, 0,0, 30)
+				Toggle.Size = UDim2.new(1, 0,0, 35)
 
 				ListfunctionToggle_1.Name = "ListfunctionToggle"
 				ListfunctionToggle_1.Parent = Toggle
@@ -840,7 +866,7 @@ function Fetching:Window(info)
 				ListfunctionToggle_1.BorderColor3 = Color3.fromRGB(0,0,0)
 				ListfunctionToggle_1.BorderSizePixel = 0
 				ListfunctionToggle_1.Position = UDim2.new(0.5, 0,0.5, 0)
-				ListfunctionToggle_1.Size = UDim2.new(0.95, 0,0, 30)
+				ListfunctionToggle_1.Size = UDim2.new(0.95, 0,0, 35)
 
 				Stroke.Parent = ListfunctionToggle_1
 				Stroke.Thickness = 0
