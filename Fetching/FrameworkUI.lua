@@ -180,13 +180,14 @@ function Fetching:Window(info)
 	Background_1.Name = "Background"
 	Background_1.Parent = ScreenUI
 	Background_1.AnchorPoint = Vector2.new(0.5, 0.5)
-	Background_1.BackgroundColor3 = Color3.fromRGB(13,13,13)
+	Background_1.BackgroundColor3 = Color3.fromRGB(10,10,10)
+	Background_1.BackgroundTransparency = 0.2
 	Background_1.BorderColor3 = Color3.fromRGB(0,0,0)
 	Background_1.BorderSizePixel = 0
 	Background_1.Position = UDim2.new(0.5, 0,0.5, 0)
 	Background_1.Size = Size
-	
-	
+
+
 	local ImageLabel_11 = Instance.new("ImageLabel")
 	ImageLabel_11.Parent = Background_1
 	ImageLabel_11.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -199,7 +200,7 @@ function Fetching:Window(info)
 	ImageLabel_11.Image = GetIcon(104034982402252)
 	ImageLabel_11.ImageTransparency = 0.5
 	ImageLabel_11.ScaleType = Enum.ScaleType.Crop
-	
+
 	local ImageLabel_12 = Instance.new("ImageLabel")
 	ImageLabel_12.Parent = Background_1
 	ImageLabel_12.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -2481,7 +2482,6 @@ function Fetching:Window(info)
 				local UICorner_1 = Instance.new("UICorner")
 				local TextHub_1 = Instance.new("Frame")
 				local UIListLayout_1 = Instance.new("UIListLayout")
-				local Desc_1 = Instance.new("TextLabel")
 				local Title_1 = Instance.new("TextLabel")
 				local ListFunc_1 = Instance.new("Frame")
 				local ValueBox_1 = Instance.new("Frame")
@@ -2532,22 +2532,6 @@ function Fetching:Window(info)
 				UIListLayout_1.SortOrder = Enum.SortOrder.LayoutOrder
 				UIListLayout_1.VerticalAlignment = Enum.VerticalAlignment.Center
 
-				Desc_1.Name = "Desc"
-				Desc_1.Parent = TextHub_1
-				Desc_1.AnchorPoint = Vector2.new(0.5, 0.5)
-				Desc_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-				Desc_1.BackgroundTransparency = 1
-				Desc_1.BorderColor3 = Color3.fromRGB(0,0,0)
-				Desc_1.BorderSizePixel = 0
-				Desc_1.LayoutOrder = 1
-				Desc_1.Position = UDim2.new(0.248750001, 0,0.0944999978, 0)
-				Desc_1.Size = UDim2.new(0, 90,0, 11)
-				Desc_1.Font = Enum.Font.GothamBold
-				Desc_1.Text = Desc
-				Desc_1.TextColor3 = Color3.fromRGB(255,255,255)
-				Desc_1.TextSize = 8
-				Desc_1.TextTransparency = 0.5
-				Desc_1.TextXAlignment = Enum.TextXAlignment.Left
 
 				Title_1.Name = "Title"
 				Title_1.Parent = TextHub_1
@@ -2585,7 +2569,7 @@ function Fetching:Window(info)
 				ValueBox_1.ClipsDescendants = true
 
 				UICorner_2.Parent = ValueBox_1
-				UICorner_2.CornerRadius = UDim.new(1,0)
+				UICorner_2.CornerRadius = UDim.new(0,5)
 
 				UIPageLayout_1.Parent = ValueBox_1
 				UIPageLayout_1.EasingStyle = Enum.EasingStyle.Exponential
