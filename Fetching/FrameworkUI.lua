@@ -1444,6 +1444,11 @@ function Fetching:Window(info)
 				Line_2.LayoutOrder = 2
 				Line_2.BorderSizePixel = 0
 				Line_2.Size = UDim2.new(1, 0,0, 1)
+				local new = {}
+				function new:SetVisible(a)
+					Line_2.Visible = a
+				end
+				return new
 			end
 			UIListLayout_12:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
 				PageLeft_1.CanvasSize = UDim2.new(0, 0, 0, UIListLayout_12.AbsoluteContentSize.Y + 20)
