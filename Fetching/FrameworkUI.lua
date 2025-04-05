@@ -1774,7 +1774,7 @@ function Fetching:Window(info)
 				if type(Value) == "table" then
 					Selected_1.Text = table.concat(Value, ", ")
 				else
-					Selected_1.Text = Value
+					Selected_1.Text = tostring(Value)
 				end
 				Selected_1.TextColor3 = Color3.fromRGB(255,255,255)
 				Selected_1.TextSize = 8
@@ -2017,20 +2017,6 @@ function Fetching:Window(info)
 						task.wait(0.07)
 						DropdownSelect.Visible = false
 					end
-
-					local NewValue = {}
-
-					function NewValue:SetVisible(a)
-						Dropdown.Visible = a
-						DropdownSelect.Visible = a
-					end
-
-					function NewValue:Set(b)
-						Title_1.Text = b
-					end
-
-					return NewValue
-
 				end)
 
 				local itemslist = {}
@@ -2300,6 +2286,17 @@ function Fetching:Window(info)
 
 				for i,v in ipairs(List) do
 					itemslist:AddList(v, i)
+				end
+
+				local NewValue = {}
+
+				function NewValue:SetVisible(a)
+					Dropdown.Visible = a
+					DropdownSelect.Visible = a
+				end
+
+				function NewValue:Set(b)
+					Title_1.Text = b
 				end
 
 				UIListLayout_1:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
@@ -3096,7 +3093,7 @@ function Fetching:Window(info)
 				Keybind.BorderSizePixel = 0
 				Keybind.LayoutOrder = 2
 				Keybind.Size = UDim2.new(1, 0,0, 150)
-				
+
 				Sad.Parent = Keybind
 				Sad.AnchorPoint = Vector2.new(0.5, 0.5)
 				Sad.BackgroundColor3 = Color3.fromRGB(255,255,255)
@@ -3107,7 +3104,7 @@ function Fetching:Window(info)
 				Sad.Size = UDim2.new(0, 70,0, 70)
 				Sad.Image = GetIcon(71289337214740)
 				Sad.ImageTransparency = 0.5
-				
+
 				ItTitle.Name = "Title"
 				ItTitle.Parent = Keybind
 				ItTitle.BackgroundColor3 = Color3.fromRGB(255,255,255)
