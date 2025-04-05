@@ -3081,6 +3081,61 @@ function Fetching:Window(info)
 
 				return NewValue
 			end
+			function Fetching.Main:Notfound(info)
+				local Title = info.Title
+
+				local Keybind = Instance.new("Frame")
+				local Sad = Instance.new("ImageLabel")
+				local ItTitle = Instance.new("TextLabel")
+
+				Keybind.Name = "Keybind"
+				Keybind.Parent = Section_1
+				Keybind.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				Keybind.BackgroundTransparency = 1
+				Keybind.BorderColor3 = Color3.fromRGB(0,0,0)
+				Keybind.BorderSizePixel = 0
+				Keybind.LayoutOrder = 2
+				Keybind.Size = UDim2.new(1, 0,0, 150)
+				
+				Sad.Parent = Keybind
+				Sad.AnchorPoint = Vector2.new(0.5, 0.5)
+				Sad.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				Sad.BackgroundTransparency = 1
+				Sad.BorderColor3 = Color3.fromRGB(0,0,0)
+				Sad.BorderSizePixel = 0
+				Sad.Position = UDim2.new(0.5, 0,0.35, 0)
+				Sad.Size = UDim2.new(0, 70,0, 70)
+				Sad.Image = GetIcon(71289337214740)
+				Sad.ImageTransparency = 0.5
+				
+				ItTitle.Name = "Title"
+				ItTitle.Parent = Keybind
+				ItTitle.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				ItTitle.AnchorPoint = Vector2.new(0.5,0.5)
+				ItTitle.BackgroundTransparency = 1
+				ItTitle.BorderColor3 = Color3.fromRGB(0,0,0)
+				ItTitle.BorderSizePixel = 0
+				ItTitle.Size = UDim2.new(0.8, 0,1, 0)
+				ItTitle.Position = UDim2.new(0.5, 0,0.75, 0)
+				ItTitle.Font = Enum.Font.GothamBold
+				ItTitle.Text = Title
+				ItTitle.TextColor3 = Color3.fromRGB(255,255,255)
+				ItTitle.TextSize = 20
+				ItTitle.TextXAlignment = Enum.TextXAlignment.Center
+				ItTitle.TextTransparency = 0.5
+
+				local NewValue = {}
+
+				function NewValue:SetVisible(a)
+					Keybind.Visible = a
+				end
+
+				function NewValue:SetTitle(b)
+					ItTitle.Text = b
+				end
+
+				return NewValue
+			end
 			return Fetching.Main
 		end
 		return Fetching.Section
