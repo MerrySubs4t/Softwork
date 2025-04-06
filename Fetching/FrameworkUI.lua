@@ -28,20 +28,6 @@ function Fetching:Window(info)
 		)
 	end
 
-	local function infolib(tbl, key)
-		local lowerKey = string.lower(key)
-		for k, v in pairs(tbl) do
-			if string.lower(k) == lowerKey then
-				return v
-			end
-		end
-		for k, v in pairs(tbl) do
-			if string.find(string.lower(k), lowerKey) then
-				return v
-			end
-		end
-		return nil
-	end
 
 	local function lak(a)
 		local Dragging = nil
@@ -766,6 +752,626 @@ function Fetching:Window(info)
 
 			function Fetching.Main:SetVisible(value)
 				Section_1.Visible = value
+			end
+
+			function Fetching.Main:CreateDropdown(info)
+
+				local Title = info.Title
+				local List = info.List
+				local Value = info.Value
+				local Multi = info.Multi or false
+				local Callback = info.Callback
+
+				local Dropdown = Instance.new("Frame")
+				local DropdownFrame_1 = Instance.new("Frame")
+				local UICorner_1 = Instance.new("UICorner")
+				local TextHub_1 = Instance.new("Frame")
+				local UIListLayout_1 = Instance.new("UIListLayout")
+				local Selected_1 = Instance.new("TextLabel")
+				local Title_1 = Instance.new("TextLabel")
+				local ImageLabel_1 = Instance.new("ImageLabel")
+				local Click_1 = Instance.new("TextButton")
+				local pd = Instance.new("UIPadding")
+
+				Dropdown.Name = "Dropdown"
+				Dropdown.Parent = Section_1
+				Dropdown.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				Dropdown.BackgroundTransparency = 1
+				Dropdown.BorderColor3 = Color3.fromRGB(0,0,0)
+				Dropdown.BorderSizePixel = 0
+				Dropdown.LayoutOrder = 2
+				Dropdown.Size = UDim2.new(1, 0,0, 38)
+
+				DropdownFrame_1.Name = "DropdownFrame"
+				DropdownFrame_1.Parent = Dropdown
+				DropdownFrame_1.AnchorPoint = Vector2.new(0.5, 0.5)
+				DropdownFrame_1.BackgroundColor3 = Color3.fromRGB(27,27,27)
+				DropdownFrame_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				DropdownFrame_1.BorderSizePixel = 0
+				DropdownFrame_1.Position = UDim2.new(0.5, 0,0.5, 0)
+				DropdownFrame_1.Size = UDim2.new(0.95, 0,1, 0)
+
+				local Stroke = Instance.new("UIStroke")
+				Stroke.Parent = DropdownFrame_1
+				Stroke.Thickness = 1
+				Stroke.Color = Color3.fromRGB(56,56,56)
+
+				UICorner_1.Parent = DropdownFrame_1
+				UICorner_1.CornerRadius = UDim.new(0,5)
+
+				TextHub_1.Name = "TextHub"
+				TextHub_1.Parent = DropdownFrame_1
+				TextHub_1.AnchorPoint = Vector2.new(0, 0.5)
+				TextHub_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				TextHub_1.BackgroundTransparency = 1
+				TextHub_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				TextHub_1.BorderSizePixel = 0
+				TextHub_1.Position = UDim2.new(0.0299999993, 0,0.5, 0)
+				TextHub_1.Size = UDim2.new(1, 0,0.800000012, 0)
+
+				pd.Parent = TextHub_1
+				pd.PaddingTop = UDim.new(0,3)
+
+				UIListLayout_1.Parent = TextHub_1
+				UIListLayout_1.Padding = UDim.new(0,4)
+				UIListLayout_1.SortOrder = Enum.SortOrder.LayoutOrder
+
+				Selected_1.Name = "Selected"
+				Selected_1.Parent = TextHub_1
+				Selected_1.AnchorPoint = Vector2.new(0.5, 0.5)
+				Selected_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				Selected_1.BackgroundTransparency = 1
+				Selected_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				Selected_1.BorderSizePixel = 0
+				Selected_1.LayoutOrder = 1
+				Selected_1.Position = UDim2.new(0.248750001, 0,0.0944999978, 0)
+				Selected_1.Size = UDim2.new(0, 150,0, 11)
+				Selected_1.Font = Enum.Font.GothamBold
+				if type(Value) == "table" then
+					Selected_1.Text = table.concat(Value, ", ")
+				else
+					Selected_1.Text = Value
+				end
+				Selected_1.TextColor3 = Color3.fromRGB(255,255,255)
+				Selected_1.TextSize = 8
+				Selected_1.TextTransparency = 0.5
+				Selected_1.TextXAlignment = Enum.TextXAlignment.Left
+
+				Title_1.Name = "Title"
+				Title_1.Parent = TextHub_1
+				Title_1.AnchorPoint = Vector2.new(0.5, 0.5)
+				Title_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				Title_1.BackgroundTransparency = 1
+				Title_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				Title_1.BorderSizePixel = 0
+				Title_1.Position = UDim2.new(0.248750001, 0,0.0644999966, 0)
+				Title_1.Size = UDim2.new(0, 150,0, 11)
+				Title_1.Font = Enum.Font.GothamBold
+				Title_1.Text = tostring(Title)
+				Title_1.TextColor3 = Color3.fromRGB(255,255,255)
+				Title_1.TextSize = 10
+				Title_1.TextXAlignment = Enum.TextXAlignment.Left
+
+				ImageLabel_1.Parent = DropdownFrame_1
+				ImageLabel_1.AnchorPoint = Vector2.new(1, 0.5)
+				ImageLabel_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				ImageLabel_1.BackgroundTransparency = 1
+				ImageLabel_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				ImageLabel_1.BorderSizePixel = 0
+				ImageLabel_1.Position = UDim2.new(0.970000029, 0,0.5, 0)
+				ImageLabel_1.Size = UDim2.new(0, 17,0, 17)
+				ImageLabel_1.Image = "rbxassetid://129573215183311"
+
+				Click_1.Name = "Click"
+				Click_1.Parent = Dropdown
+				Click_1.Active = true
+				Click_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				Click_1.BackgroundTransparency = 1
+				Click_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				Click_1.BorderSizePixel = 0
+				Click_1.Size = UDim2.new(1, 0,1, 0)
+				Click_1.Font = Enum.Font.SourceSans
+				Click_1.Text = ""
+				Click_1.TextSize = 14
+
+				local DropdownSelect = Instance.new("Frame")
+				local DropdownFrame_1 = Instance.new("Frame")
+				local UICorner_1 = Instance.new("UICorner")
+				local ScrollingFrame_1z = Instance.new("ScrollingFrame")
+				local UIListLayout_1 = Instance.new("UIListLayout")
+
+				DropdownSelect.Name = "DropdownSelect"
+				DropdownSelect.Parent = Background_1
+				DropdownSelect.AnchorPoint = Vector2.new(0.5,0.5)
+				DropdownSelect.Position = UDim2.new(0.5,0,0.5,0)
+				DropdownSelect.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				DropdownSelect.BackgroundTransparency = 1
+				DropdownSelect.BorderColor3 = Color3.fromRGB(0,0,0)
+				DropdownSelect.BorderSizePixel = 0
+				DropdownSelect.LayoutOrder = 2
+				DropdownSelect.Size = UDim2.new(0.5, 0,0, 250)
+				DropdownSelect.Visible = false
+
+				local Shadow = Instance.new("ImageLabel")
+				Shadow.Parent = DropdownSelect
+				Shadow.Name = "DropShadow"
+				Shadow.AnchorPoint = Vector2.new(0.5, 0.5)
+				Shadow.BackgroundColor3 = Color3.fromRGB(28,28,30)
+				Shadow.BackgroundTransparency = 1
+				Shadow.BorderColor3 = Color3.fromRGB(0,0,0)
+				Shadow.BorderSizePixel = 0
+				Shadow.Position = UDim2.new(0.5, 0, 0.5, 0)
+				Shadow.Size = UDim2.new(1, 120, 1, 120)
+				Shadow.Image = "rbxassetid://8992230677"
+				Shadow.ImageColor3 = Color3.new(1, 1, 1)
+				Shadow.ImageTransparency = 0.8
+				Shadow.ResampleMode = Enum.ResamplerMode.Default
+				Shadow.ScaleType = Enum.ScaleType.Slice
+				Shadow.SliceScale = 1
+				Shadow.TileSize = UDim2.new(1, 0, 1, 0)
+				Shadow.SliceCenter = Rect.new(99, 99, 99, 99)
+
+				local UIGD = Instance.new("UIGradient")
+				UIGD.Rotation = 180
+				UIGD.Parent = Shadow
+				UIGD.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 170, 255)), ColorSequenceKeypoint.new(1, Color3.fromRGB(105, 94, 255))}
+
+				local Search_1 = Instance.new("Frame")
+				local UICorner_2 = Instance.new("UICorner")
+				local TextBox_1 = Instance.new("TextBox")
+				local ImageLabel_1 = Instance.new("ImageLabel")
+				local UIPadding_1 = Instance.new("UIPadding")
+				Search_1.Name = "Search"
+				Search_1.Parent = DropdownSelect
+				Search_1.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+				Search_1.AnchorPoint = Vector2.new(0.5,0.5)
+				Search_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				Search_1.BorderSizePixel = 0
+				Search_1.LayoutOrder = -1
+				Search_1.Size = UDim2.new(0.9, 0,0, 20)
+				Search_1.Position = UDim2.new(0.5, 0,0, 15)
+				Search_1.ZIndex = 2
+
+				UICorner_2.Parent = Search_1
+				UICorner_2.CornerRadius = UDim.new(1,0)
+
+				TextBox_1.Parent = Search_1
+				TextBox_1.Active = true
+				TextBox_1.ZIndex = 2
+				TextBox_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				TextBox_1.BackgroundTransparency = 1
+				TextBox_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				TextBox_1.BorderSizePixel = 0
+				TextBox_1.Size = UDim2.new(0.95, 0,1, 0)
+				TextBox_1.Font = Enum.Font.GothamBold
+				TextBox_1.PlaceholderColor3 = Color3.fromRGB(178,178,178)
+				TextBox_1.PlaceholderText = "Search"
+				TextBox_1.Text = ""
+				TextBox_1.TextColor3 = Color3.fromRGB(255,255,255)
+				TextBox_1.TextSize = 9
+				TextBox_1.TextXAlignment = Enum.TextXAlignment.Left
+
+				UIPadding_1.Parent = Search_1
+				UIPadding_1.PaddingLeft = UDim.new(0,5)
+				UIPadding_1.PaddingRight = UDim.new(0,5)
+				ImageLabel_1.Parent = Search_1
+				ImageLabel_1.AnchorPoint = Vector2.new(1, 0.5)
+				ImageLabel_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				ImageLabel_1.BackgroundTransparency = 1
+				ImageLabel_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				ImageLabel_1.BorderSizePixel = 0
+				ImageLabel_1.Position = UDim2.new(1, 0,0.5, 0)
+				ImageLabel_1.Size = UDim2.new(0, 10,0, 10)
+				ImageLabel_1.Image = "rbxassetid://14897613248"
+				ImageLabel_1.ImageTransparency = 0.5
+				ImageLabel_1.ZIndex = 2
+
+				DropdownFrame_1.Name = "DropdownFrame"
+				DropdownFrame_1.Parent = DropdownSelect
+				DropdownFrame_1.AnchorPoint = Vector2.new(0.5, 0.5)
+				DropdownFrame_1.BackgroundColor3 = Color3.fromRGB(18,18,18)
+				DropdownFrame_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				DropdownFrame_1.BorderSizePixel = 0
+				DropdownFrame_1.Position = UDim2.new(0.5, 0,0.5, 0)
+				DropdownFrame_1.Size = UDim2.new(0.95, 0,1, 0)
+
+				local Stroke = Instance.new("UIStroke")
+				Stroke.Parent = DropdownFrame_1
+				Stroke.Thickness = 1
+				Stroke.Color = Color3.fromRGB(56,56,56)
+
+				UICorner_1.Parent = DropdownFrame_1
+				UICorner_1.CornerRadius = UDim.new(0,5)
+
+				ScrollingFrame_1z.Name = "ScrollingFrame"
+				ScrollingFrame_1z.Parent = DropdownFrame_1
+				ScrollingFrame_1z.Active = true
+				ScrollingFrame_1z.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				ScrollingFrame_1z.BackgroundTransparency = 1
+				ScrollingFrame_1z.BorderColor3 = Color3.fromRGB(0,0,0)
+				ScrollingFrame_1z.BorderSizePixel = 0
+				ScrollingFrame_1z.Size = UDim2.new(1, 0,0.85, 0)
+				ScrollingFrame_1z.Position = UDim2.new(0, 0,0, 35)
+				ScrollingFrame_1z.ClipsDescendants = true
+				ScrollingFrame_1z.AutomaticCanvasSize = Enum.AutomaticSize.None
+				ScrollingFrame_1z.BottomImage = "rbxasset://textures/ui/Scroll/scroll-bottom.png"
+				ScrollingFrame_1z.CanvasPosition = Vector2.new(0, 0)
+				ScrollingFrame_1z.ElasticBehavior = Enum.ElasticBehavior.WhenScrollable
+				ScrollingFrame_1z.HorizontalScrollBarInset = Enum.ScrollBarInset.None
+				ScrollingFrame_1z.MidImage = "rbxasset://textures/ui/Scroll/scroll-middle.png"
+				ScrollingFrame_1z.ScrollBarImageColor3 = Color3.fromRGB(0,0,0)
+				ScrollingFrame_1z.ScrollBarImageTransparency = 0
+				ScrollingFrame_1z.ScrollBarThickness = 0
+				ScrollingFrame_1z.ScrollingDirection = Enum.ScrollingDirection.XY
+				ScrollingFrame_1z.TopImage = "rbxasset://textures/ui/Scroll/scroll-top.png"
+				ScrollingFrame_1z.VerticalScrollBarInset = Enum.ScrollBarInset.None
+				ScrollingFrame_1z.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Right
+
+				UIListLayout_1.Parent = ScrollingFrame_1z
+				UIListLayout_1.SortOrder = Enum.SortOrder.Name
+
+				local NewValue = {}
+
+				function NewValue:SetVisible(a)
+					Dropdown.Visible = a
+					DropdownSelect.Visible = a
+				end
+
+				function NewValue:Set(b)
+					Title_1.Text = b
+				end
+
+				local isOpen = false
+				game:GetService "UserInputService".InputBegan:Connect(function(A)
+					if A.UserInputType == Enum.UserInputType.MouseButton1 or A.UserInputType == Enum.UserInputType.Touch then
+						local B, C = DropdownSelect.AbsolutePosition, DropdownSelect.AbsoluteSize
+						if game:GetService "Players".LocalPlayer:GetMouse().X < B.X or game:GetService "Players".LocalPlayer:GetMouse().X > B.X + C.X or game:GetService "Players".LocalPlayer:GetMouse().Y < (B.Y - 20 - 1) or game:GetService "Players".LocalPlayer:GetMouse().Y > B.Y + C.Y then
+							isOpen = false
+							tw({
+								v = ImageLabel_1,
+								t = 0.15,
+								s = "Exponential",
+								d = "Out",
+								g = {Rotation = 0}
+							}):Play()
+							DropdownSelect.Visible = false
+						end
+					end
+				end)
+				TextBox_1.Changed:Connect(function()
+					local SearchT = string.lower(TextBox_1.Text)
+					for i, v in pairs(ScrollingFrame_1z:GetChildren()) do
+						if v:IsA("Frame") then
+							for _, k in pairs(v:GetChildren()) do
+								if k.Name == "LabelFrame" then
+									for _, a in pairs(k:GetChildren()) do
+										if a:IsA("TextLabel") then
+											local labelText = string.lower(a.Text)
+											if string.find(labelText, SearchT, 1, true) then
+												v.Visible = true
+											else
+												v.Visible = false
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end)
+
+
+				Click_1.MouseButton1Click:Connect(function()
+					isOpen = not isOpen
+					if isOpen then
+						tw({
+							v = ImageLabel_1,
+							t = 0.15,
+							s = "Exponential",
+							d = "Out",
+							g = {Rotation = 90}
+						}):Play()
+						task.wait(0.05)
+						DropdownSelect.Visible = true
+					else
+						tw({
+							v = ImageLabel_1,
+							t = 0.15,
+							s = "Exponential",
+							d = "Out",
+							g = {Rotation = 0}
+						}):Play()
+						task.wait(0.07)
+						DropdownSelect.Visible = false
+					end
+				end)
+
+				local itemslist = {}
+				local selectedItem
+
+				function itemslist:Clear(a)
+					local function shouldClear(v)
+						if a == nil then
+							return true
+						elseif type(a) == "string" then
+							return v:FindFirstChild("LabelFrame") and v.LabelFrame:FindFirstChild("Title") and v.LabelFrame.Title.Text == a
+						elseif type(a) == "table" then
+							for _, name in ipairs(a) do
+								if v:FindFirstChild("LabelFrame") and v.LabelFrame:FindFirstChild("Title") and v.LabelFrame.Title.Text == name then
+									return true
+								end
+							end
+						end
+						return false
+					end
+
+					for _, v in ipairs(ScrollingFrame_1z:GetChildren()) do
+						if v:IsA("Frame") and shouldClear(v) then
+							if selectedItem and v:FindFirstChild("LabelFrame") and v.LabelFrame:FindFirstChild("Title") and v.LabelFrame.Title.Text == selectedItem then
+								selectedItem = nil
+								Selected_1.Text = ""
+							end
+							v:Destroy()
+						end
+					end
+
+					if selectedItem == a or Selected_1.Text == a then
+						selectedItem = nil
+						Selected_1.Text = ""
+					end
+
+					if a == nil then
+						selectedItem = nil
+						Selected_1.Text = ""
+					end
+				end
+
+				local selectedValues = {}
+
+				function itemslist:AddList(text)
+
+					local Item_1 = Instance.new("Frame")
+					local LabelFrame_1 = Instance.new("Frame")
+					local UICorner_2 = Instance.new("UICorner")
+					local Title_1 = Instance.new("TextLabel")
+					local UIGradient_1 = Instance.new("UIGradient")
+					local SelectedFrame_1 = Instance.new("Frame")
+					local UICorner_3 = Instance.new("UICorner")
+					local Click_1 = Instance.new("TextButton")
+
+					Item_1.Name = "Item"
+					Item_1.Parent = ScrollingFrame_1z
+					Item_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+					Item_1.BackgroundTransparency = 1
+					Item_1.BorderColor3 = Color3.fromRGB(0,0,0)
+					Item_1.BorderSizePixel = 0
+					Item_1.LayoutOrder = 2
+					Item_1.Size = UDim2.new(1, 0,0, 25)
+
+					LabelFrame_1.Name = "LabelFrame"
+					LabelFrame_1.Parent = Item_1
+					LabelFrame_1.AnchorPoint = Vector2.new(0.5, 0.5)
+					LabelFrame_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+					LabelFrame_1.BackgroundTransparency = 1
+					LabelFrame_1.BorderColor3 = Color3.fromRGB(0,0,0)
+					LabelFrame_1.BorderSizePixel = 0
+					LabelFrame_1.Position = UDim2.new(0.5, 0,0.5, 0)
+					LabelFrame_1.Size = UDim2.new(0.899999976, 0,0, 25)
+
+					UICorner_2.Parent = LabelFrame_1
+					UICorner_2.CornerRadius = UDim.new(0,5)
+
+					Title_1.Name = "Title"
+					Title_1.Parent = LabelFrame_1
+					Title_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+					Title_1.BackgroundTransparency = 1
+					Title_1.BorderColor3 = Color3.fromRGB(0,0,0)
+					Title_1.BorderSizePixel = 0
+					Title_1.Size = UDim2.new(1, 0,1, 0)
+					Title_1.Font = Enum.Font.GothamBold
+					Title_1.RichText = true
+					Title_1.Text = tostring(text)
+					Title_1.TextColor3 = Color3.fromRGB(204,204,204)
+					Title_1.TextSize = 9
+					Title_1.TextWrapped = true
+					Title_1.TextTransparency = 0.5
+
+					UIGradient_1.Parent = LabelFrame_1
+					UIGradient_1.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(113, 113, 113)), ColorSequenceKeypoint.new(1, Color3.fromRGB(94, 94, 94))}
+
+					SelectedFrame_1.Name = "SelectedFrame"
+					SelectedFrame_1.Parent = Item_1
+					SelectedFrame_1.AnchorPoint = Vector2.new(0.5, 0.5)
+					SelectedFrame_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+					SelectedFrame_1.BackgroundTransparency = 1
+					SelectedFrame_1.BorderColor3 = Color3.fromRGB(0,0,0)
+					SelectedFrame_1.BorderSizePixel = 0
+					SelectedFrame_1.Position = UDim2.new(0.5, 0,0.899999976, 0)
+					SelectedFrame_1.Size = UDim2.new(0, 40,0, 2)
+
+					UICorner_3.Parent = SelectedFrame_1
+					UICorner_3.CornerRadius = UDim.new(1,0)
+
+					Click_1.Name = "Click"
+					Click_1.Parent = Item_1
+					Click_1.Active = true
+					Click_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+					Click_1.BackgroundTransparency = 1
+					Click_1.BorderColor3 = Color3.fromRGB(0,0,0)
+					Click_1.BorderSizePixel = 0
+					Click_1.Size = UDim2.new(1, 0,1, 0)
+					Click_1.Font = Enum.Font.SourceSans
+					Click_1.Text = ""
+					Click_1.TextSize = 14
+
+					Click_1.MouseButton1Click:Connect(function()
+						if Multi then
+							if selectedValues[text] then
+								selectedValues[text] = nil
+								tw({
+									v = Title_1,
+									t = 0.15,
+									s = "Exponential",
+									d = "Out",
+									g = {TextTransparency = 0.5}
+								}):Play()
+								tw({
+									v = SelectedFrame_1,
+									t = 0.15,
+									s = "Exponential",
+									d = "Out",
+									g = {BackgroundTransparency = 1}
+								}):Play()
+							else
+								selectedValues[text] = true
+								tw({
+									v = Title_1,
+									t = 0.15,
+									s = "Exponential",
+									d = "Out",
+									g = {TextTransparency = 0}
+								}):Play()
+								tw({
+									v = SelectedFrame_1,
+									t = 0.15,
+									s = "Exponential",
+									d = "Out",
+									g = {BackgroundTransparency = 0.3}
+								}):Play()
+							end
+							local selectedList = {}
+							for i, v in pairs(selectedValues) do
+								table.insert(selectedList, i)
+							end
+							if #selectedList > 0 then
+								Selected_1.Text = table.concat(selectedList, ", ")
+							else
+								Selected_1.Text = ""
+							end
+							pcall(Callback, selectedList)
+						else
+							for i,v in pairs(ScrollingFrame_1z:GetChildren()) do
+								if v:IsA("Frame") then
+									tw({
+										v = v.LabelFrame.Title,
+										t = 0.15,
+										s = "Exponential",
+										d = "Out",
+										g = {TextTransparency = 0.5}
+									}):Play()
+									tw({
+										v = v.SelectedFrame,
+										t = 0.15,
+										s = "Exponential",
+										d = "Out",
+										g = {BackgroundTransparency = 1}
+									}):Play()
+								end
+							end
+
+							tw({
+								v = Title_1,
+								t = 0.15,
+								s = "Exponential",
+								d = "Out",
+								g = {TextTransparency = 0}
+							}):Play()
+							tw({
+								v = SelectedFrame_1,
+								t = 0.15,
+								s = "Exponential",
+								d = "Out",
+								g = {BackgroundTransparency = 0.3}
+							}):Play()
+
+							task.wait(0.07)
+							DropdownSelect.Visible = false
+							isOpen = false
+							Value = text
+							Selected_1.Text = text
+
+							pcall(function()
+								Callback(Selected_1.Text)
+							end)
+						end
+					end)
+
+					local function isValueInTable(val, tbl)
+						if type(tbl) ~= "table" then
+							return false
+						end
+
+						for _, v in pairs(tbl) do
+							if v == val then
+								return true
+							end
+						end
+						return false
+					end
+
+					delay(0,function()
+						if Multi then
+							if isValueInTable(text, Value) then
+								tw({
+									v = Title_1,
+									t = 0.15,
+									s = "Exponential",
+									d = "Out",
+									g = {TextTransparency = 0}
+								}):Play()
+								tw({
+									v = SelectedFrame_1,
+									t = 0.15,
+									s = "Exponential",
+									d = "Out",
+									g = {BackgroundTransparency = 0.3}
+								}):Play()
+								selectedValues[text] = true
+								local selectedList = {}
+								for i, v in pairs(selectedValues) do
+									table.insert(selectedList, i)
+								end
+								if #selectedList > 0 then
+									Selected_1.Text = table.concat(selectedList, ", ")
+								else
+									Selected_1.Text = ""
+								end
+								pcall(Callback, selectedList)
+							end
+						else
+							if text == Value then
+								tw({
+									v = Title_1,
+									t = 0.15,
+									s = "Exponential",
+									d = "Out",
+									g = {TextTransparency = 0}
+								}):Play()
+								tw({
+									v = SelectedFrame_1,
+									t = 0.15,
+									s = "Exponential",
+									d = "Out",
+									g = {BackgroundTransparency = 0.3}
+								}):Play()
+
+								Value = text
+								Selected_1.Text = text
+								Callback(Selected_1.Text)
+							end
+						end
+					end)
+				end
+
+				for i,v in ipairs(List) do
+					itemslist:AddList(v, i)
+				end
+
+				UIListLayout_1:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+					ScrollingFrame_1z.CanvasSize = UDim2.new(0, 0, 0, UIListLayout_1.AbsoluteContentSize.Y + 5)
+				end)
+
+				return itemslist, NewValue
 			end
 
 			function Fetching.Main:Video(info)
@@ -1712,524 +2318,6 @@ function Fetching:Window(info)
 				end
 
 				return NewValue
-			end
-			function Fetching.Main:CreateDropdown(info)
-
-				local Title = infolib(info, "name") or infolib(info, "title") or "Dropdown"
-				local Value = infolib(info, "defuse") or infolib(info, "value")
-				local Callback = infolib(info, "callback") or function() end
-				local List = infolib(info, "list")
-				local Multi = infolib(info, "multi") or infolib(info, "multidropdown") or false
-
-				local Dropdown = Instance.new("Frame")
-				local DropdownFrame_1 = Instance.new("Frame")
-				local UICorner_1 = Instance.new("UICorner")
-				local TextHub_1 = Instance.new("Frame")
-				local UIListLayout_1 = Instance.new("UIListLayout")
-				local Selected_1 = Instance.new("TextLabel")
-				local Title_1 = Instance.new("TextLabel")
-				local ImageLabel_1 = Instance.new("ImageLabel")
-				local Click_1 = Instance.new("TextButton")
-
-				Dropdown.Name = "Dropdown"
-				Dropdown.Parent = Section_1
-				Dropdown.BackgroundColor3 = Color3.fromRGB(255,255,255)
-				Dropdown.BackgroundTransparency = 1
-				Dropdown.BorderColor3 = Color3.fromRGB(0,0,0)
-				Dropdown.BorderSizePixel = 0
-				Dropdown.LayoutOrder = 2
-				Dropdown.Size = UDim2.new(1, 0,0, 30)
-
-				DropdownFrame_1.Name = "DropdownFrame"
-				DropdownFrame_1.Parent = Dropdown
-				DropdownFrame_1.AnchorPoint = Vector2.new(0.5, 0.5)
-				DropdownFrame_1.BackgroundColor3 = Color3.fromRGB(44,44,44)
-				DropdownFrame_1.BorderColor3 = Color3.fromRGB(0,0,0)
-				DropdownFrame_1.BorderSizePixel = 0
-				DropdownFrame_1.Position = UDim2.new(0.5, 0,0.5, 0)
-				DropdownFrame_1.Size = UDim2.new(0.899999976, 0,1, 0)
-
-				UICorner_1.Parent = DropdownFrame_1
-				UICorner_1.CornerRadius = UDim.new(0,5)
-
-				TextHub_1.Name = "TextHub"
-				TextHub_1.Parent = DropdownFrame_1
-				TextHub_1.AnchorPoint = Vector2.new(0, 0.5)
-				TextHub_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-				TextHub_1.BackgroundTransparency = 1
-				TextHub_1.BorderColor3 = Color3.fromRGB(0,0,0)
-				TextHub_1.BorderSizePixel = 0
-				TextHub_1.Position = UDim2.new(0.0299999993, 0,0.5, 0)
-				TextHub_1.Size = UDim2.new(1, 0,0.800000012, 0)
-
-				UIListLayout_1.Parent = TextHub_1
-				UIListLayout_1.Padding = UDim.new(0,2)
-				UIListLayout_1.SortOrder = Enum.SortOrder.LayoutOrder
-
-				Selected_1.Name = "Selected"
-				Selected_1.Parent = TextHub_1
-				Selected_1.AnchorPoint = Vector2.new(0.5, 0.5)
-				Selected_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-				Selected_1.BackgroundTransparency = 1
-				Selected_1.BorderColor3 = Color3.fromRGB(0,0,0)
-				Selected_1.BorderSizePixel = 0
-				Selected_1.LayoutOrder = 1
-				Selected_1.Position = UDim2.new(0.248750001, 0,0.0944999978, 0)
-				Selected_1.Size = UDim2.new(0, 150,0, 11)
-				Selected_1.Font = Enum.Font.GothamBold
-				if type(Value) == "table" then
-					Selected_1.Text = table.concat(Value, ", ")
-				else
-					Selected_1.Text = Value
-				end
-				Selected_1.TextColor3 = Color3.fromRGB(255,255,255)
-				Selected_1.TextSize = 8
-				Selected_1.TextTransparency = 0.5
-				Selected_1.TextXAlignment = Enum.TextXAlignment.Left
-				Selected_1.TextTruncate = Enum.TextTruncate.AtEnd
-
-				Title_1.Name = "Title"
-				Title_1.Parent = TextHub_1
-				Title_1.AnchorPoint = Vector2.new(0.5, 0.5)
-				Title_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-				Title_1.BackgroundTransparency = 1
-				Title_1.BorderColor3 = Color3.fromRGB(0,0,0)
-				Title_1.BorderSizePixel = 0
-				Title_1.Position = UDim2.new(0.248750001, 0,0.0644999966, 0)
-				Title_1.Size = UDim2.new(0, 150,0, 11)
-				Title_1.Font = Enum.Font.GothamBold
-				Title_1.Text = tostring(Title)
-				Title_1.TextColor3 = Color3.fromRGB(255,255,255)
-				Title_1.TextSize = 10
-				Title_1.TextXAlignment = Enum.TextXAlignment.Left
-
-				ImageLabel_1.Parent = DropdownFrame_1
-				ImageLabel_1.AnchorPoint = Vector2.new(1, 0.5)
-				ImageLabel_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-				ImageLabel_1.BackgroundTransparency = 1
-				ImageLabel_1.BorderColor3 = Color3.fromRGB(0,0,0)
-				ImageLabel_1.BorderSizePixel = 0
-				ImageLabel_1.Position = UDim2.new(0.970000029, 0,0.5, 0)
-				ImageLabel_1.Size = UDim2.new(0, 10,0, 10)
-				ImageLabel_1.Image = "rbxassetid://11419703997"
-
-				Click_1.Name = "Click"
-				Click_1.Parent = Dropdown
-				Click_1.Active = true
-				Click_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-				Click_1.BackgroundTransparency = 1
-				Click_1.BorderColor3 = Color3.fromRGB(0,0,0)
-				Click_1.BorderSizePixel = 0
-				Click_1.Size = UDim2.new(1, 0,1, 0)
-				Click_1.Font = Enum.Font.SourceSans
-				Click_1.Text = ""
-				Click_1.TextSize = 14
-
-				local DropdownSelect = Instance.new("Frame")
-				local DropdownFrame_1 = Instance.new("Frame")
-				local UICorner_1 = Instance.new("UICorner")
-				local ScrollingFrame_1 = Instance.new("ScrollingFrame")
-				local UIListLayout_1 = Instance.new("UIListLayout")
-
-				DropdownSelect.Name = "DropdownSelect"
-				DropdownSelect.Parent = Section_1
-				DropdownSelect.BackgroundColor3 = Color3.fromRGB(255,255,255)
-				DropdownSelect.BackgroundTransparency = 1
-				DropdownSelect.BorderColor3 = Color3.fromRGB(0,0,0)
-				DropdownSelect.BorderSizePixel = 0
-				DropdownSelect.LayoutOrder = 2
-				DropdownSelect.Size = UDim2.new(1, 0,0, 0)
-
-				DropdownFrame_1.Name = "DropdownFrame"
-				DropdownFrame_1.Parent = DropdownSelect
-				DropdownFrame_1.AnchorPoint = Vector2.new(0.5, 0.5)
-				DropdownFrame_1.BackgroundColor3 = Color3.fromRGB(28,28,28)
-				DropdownFrame_1.BorderColor3 = Color3.fromRGB(0,0,0)
-				DropdownFrame_1.BorderSizePixel = 0
-				DropdownFrame_1.Position = UDim2.new(0.5, 0,0.5, 0)
-				DropdownFrame_1.Size = UDim2.new(0.899999976, 0,1, 0)
-
-				UICorner_1.Parent = DropdownFrame_1
-				UICorner_1.CornerRadius = UDim.new(0,5)
-
-				ScrollingFrame_1.Name = "ScrollingFrame"
-				ScrollingFrame_1.Parent = DropdownFrame_1
-				ScrollingFrame_1.Active = true
-				ScrollingFrame_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-				ScrollingFrame_1.BackgroundTransparency = 1
-				ScrollingFrame_1.BorderColor3 = Color3.fromRGB(0,0,0)
-				ScrollingFrame_1.BorderSizePixel = 0
-				ScrollingFrame_1.Size = UDim2.new(1, 0,1, 0)
-				ScrollingFrame_1.ClipsDescendants = true
-				ScrollingFrame_1.AutomaticCanvasSize = Enum.AutomaticSize.None
-				ScrollingFrame_1.BottomImage = "rbxasset://textures/ui/Scroll/scroll-bottom.png"
-				ScrollingFrame_1.CanvasPosition = Vector2.new(0, 0)
-				ScrollingFrame_1.ElasticBehavior = Enum.ElasticBehavior.WhenScrollable
-				ScrollingFrame_1.HorizontalScrollBarInset = Enum.ScrollBarInset.None
-				ScrollingFrame_1.MidImage = "rbxasset://textures/ui/Scroll/scroll-middle.png"
-				ScrollingFrame_1.ScrollBarImageColor3 = Color3.fromRGB(0,0,0)
-				ScrollingFrame_1.ScrollBarImageTransparency = 0
-				ScrollingFrame_1.ScrollBarThickness = 0
-				ScrollingFrame_1.ScrollingDirection = Enum.ScrollingDirection.XY
-				ScrollingFrame_1.TopImage = "rbxasset://textures/ui/Scroll/scroll-top.png"
-				ScrollingFrame_1.VerticalScrollBarInset = Enum.ScrollBarInset.None
-				ScrollingFrame_1.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Right
-
-				UIListLayout_1.Parent = ScrollingFrame_1
-				UIListLayout_1.SortOrder = Enum.SortOrder.LayoutOrder
-
-				local isOpen = false
-
-				Click_1.MouseButton1Click:Connect(function()
-					isOpen = not isOpen
-					if isOpen then
-						tw({
-							v = ImageLabel_1,
-							t = 0.15,
-							s = "Exponential",
-							d = "Out",
-							g = {Rotation = 90}
-						}):Play()
-						if UIListLayout_1.AbsoluteContentSize.Y + 5 < 100 then
-							tw({
-								v = DropdownSelect,
-								t = 0.15,
-								s = "Exponential",
-								d = "Out",
-								g = {Size = UDim2.new(1, 0,0, UIListLayout_1.AbsoluteContentSize.Y + 5)}
-							}):Play()
-						else
-							tw({
-								v = DropdownSelect,
-								t = 0.15,
-								s = "Exponential",
-								d = "Out",
-								g = {Size = UDim2.new(1, 0,0, 100)}
-							}):Play()
-						end
-					else
-						tw({
-							v = ImageLabel_1,
-							t = 0.15,
-							s = "Exponential",
-							d = "Out",
-							g = {Rotation = 0}
-						}):Play()
-						tw({
-							v = DropdownSelect,
-							t = 0.15,
-							s = "Exponential",
-							d = "Out",
-							g = {Size = UDim2.new(1, 0,0, 0)}
-						}):Play()
-					end
-
-					local NewValue = {}
-
-					function NewValue:SetVisible(a)
-						Dropdown.Visible = a
-						DropdownSelect.Visible = a
-					end
-
-					function NewValue:Set(b)
-						Title_1.Text = b
-					end
-
-					return NewValue
-
-				end)
-
-				local itemslist = {}
-				local selectedItem
-
-				function itemslist:Clear(a)
-					local function shouldClear(v)
-						if a == nil then
-							return true
-						elseif type(a) == "string" then
-							return v:FindFirstChild("LabelFrame") and v.LabelFrame:FindFirstChild("Title") and v.LabelFrame.Title.Text == a
-						elseif type(a) == "table" then
-							for _, name in ipairs(a) do
-								if v:FindFirstChild("LabelFrame") and v.LabelFrame:FindFirstChild("Title") and v.LabelFrame.Title.Text == name then
-									return true
-								end
-							end
-						end
-						return false
-					end
-
-					for _, v in ipairs(ScrollingFrame_1:GetChildren()) do
-						if v:IsA("Frame") and shouldClear(v) then
-							if selectedItem and v:FindFirstChild("LabelFrame") and v.LabelFrame:FindFirstChild("Title") and v.LabelFrame.Title.Text == selectedItem then
-								selectedItem = nil
-								Selected_1.Text = ""
-							end
-							v:Destroy()
-						end
-					end
-
-					if selectedItem == a or Selected_1.Text == a then
-						selectedItem = nil
-						Selected_1.Text = ""
-					end
-
-					if a == nil then
-						selectedItem = nil
-						Selected_1.Text = ""
-					end
-				end
-
-				local selectedValues = {}
-
-				function itemslist:AddList(text)
-
-					local Item_1 = Instance.new("Frame")
-					local LabelFrame_1 = Instance.new("Frame")
-					local UICorner_2 = Instance.new("UICorner")
-					local Title_1 = Instance.new("TextLabel")
-					local UIGradient_1 = Instance.new("UIGradient")
-					local SelectedFrame_1 = Instance.new("Frame")
-					local UICorner_3 = Instance.new("UICorner")
-					local Click_1 = Instance.new("TextButton")
-
-					Item_1.Name = "Item"
-					Item_1.Parent = ScrollingFrame_1
-					Item_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-					Item_1.BackgroundTransparency = 1
-					Item_1.BorderColor3 = Color3.fromRGB(0,0,0)
-					Item_1.BorderSizePixel = 0
-					Item_1.LayoutOrder = 2
-					Item_1.Size = UDim2.new(1, 0,0, 25)
-
-					LabelFrame_1.Name = "LabelFrame"
-					LabelFrame_1.Parent = Item_1
-					LabelFrame_1.AnchorPoint = Vector2.new(0.5, 0.5)
-					LabelFrame_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-					LabelFrame_1.BackgroundTransparency = 1
-					LabelFrame_1.BorderColor3 = Color3.fromRGB(0,0,0)
-					LabelFrame_1.BorderSizePixel = 0
-					LabelFrame_1.Position = UDim2.new(0.5, 0,0.5, 0)
-					LabelFrame_1.Size = UDim2.new(0.899999976, 0,0, 25)
-
-					UICorner_2.Parent = LabelFrame_1
-					UICorner_2.CornerRadius = UDim.new(0,5)
-
-					Title_1.Name = "Title"
-					Title_1.Parent = LabelFrame_1
-					Title_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-					Title_1.BackgroundTransparency = 1
-					Title_1.BorderColor3 = Color3.fromRGB(0,0,0)
-					Title_1.BorderSizePixel = 0
-					Title_1.Size = UDim2.new(1, 0,1, 0)
-					Title_1.Font = Enum.Font.GothamBold
-					Title_1.RichText = true
-					Title_1.Text = tostring(text)
-					Title_1.TextColor3 = Color3.fromRGB(204,204,204)
-					Title_1.TextSize = 9
-					Title_1.TextWrapped = true
-					Title_1.TextTransparency = 0.5
-
-					UIGradient_1.Parent = LabelFrame_1
-					UIGradient_1.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(113, 113, 113)), ColorSequenceKeypoint.new(1, Color3.fromRGB(94, 94, 94))}
-
-					SelectedFrame_1.Name = "SelectedFrame"
-					SelectedFrame_1.Parent = Item_1
-					SelectedFrame_1.AnchorPoint = Vector2.new(0.5, 0.5)
-					SelectedFrame_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-					SelectedFrame_1.BackgroundTransparency = 1
-					SelectedFrame_1.BorderColor3 = Color3.fromRGB(0,0,0)
-					SelectedFrame_1.BorderSizePixel = 0
-					SelectedFrame_1.Position = UDim2.new(0.5, 0,0.899999976, 0)
-					SelectedFrame_1.Size = UDim2.new(0, 40,0, 2)
-
-					UICorner_3.Parent = SelectedFrame_1
-					UICorner_3.CornerRadius = UDim.new(1,0)
-
-					Click_1.Name = "Click"
-					Click_1.Parent = Item_1
-					Click_1.Active = true
-					Click_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-					Click_1.BackgroundTransparency = 1
-					Click_1.BorderColor3 = Color3.fromRGB(0,0,0)
-					Click_1.BorderSizePixel = 0
-					Click_1.Size = UDim2.new(1, 0,1, 0)
-					Click_1.Font = Enum.Font.SourceSans
-					Click_1.Text = ""
-					Click_1.TextSize = 14
-
-					Click_1.MouseButton1Click:Connect(function()
-						if Multi then
-							if selectedValues[text] then
-								selectedValues[text] = nil
-								tw({
-									v = Title_1,
-									t = 0.15,
-									s = "Exponential",
-									d = "Out",
-									g = {TextTransparency = 0.5}
-								}):Play()
-								tw({
-									v = SelectedFrame_1,
-									t = 0.15,
-									s = "Exponential",
-									d = "Out",
-									g = {BackgroundTransparency = 1}
-								}):Play()
-							else
-								selectedValues[text] = true
-								tw({
-									v = Title_1,
-									t = 0.15,
-									s = "Exponential",
-									d = "Out",
-									g = {TextTransparency = 0}
-								}):Play()
-								tw({
-									v = SelectedFrame_1,
-									t = 0.15,
-									s = "Exponential",
-									d = "Out",
-									g = {BackgroundTransparency = 0.3}
-								}):Play()
-							end
-							local selectedList = {}
-							for i, v in pairs(selectedValues) do
-								table.insert(selectedList, i)
-							end
-							if #selectedList > 0 then
-								Selected_1.Text = table.concat(selectedList, ", ")
-							else
-								Selected_1.Text = ""
-							end
-							pcall(function()
-								Callback(selectedList)
-							end)
-						else
-							for i,v in pairs(ScrollingFrame_1:GetChildren()) do
-								if v:IsA("Frame") then
-									tw({
-										v = v.LabelFrame.Title,
-										t = 0.15,
-										s = "Exponential",
-										d = "Out",
-										g = {TextTransparency = 0.5}
-									}):Play()
-									tw({
-										v = v.SelectedFrame,
-										t = 0.15,
-										s = "Exponential",
-										d = "Out",
-										g = {BackgroundTransparency = 1}
-									}):Play()
-								end
-							end
-							tw({
-								v = Title_1,
-								t = 0.15,
-								s = "Exponential",
-								d = "Out",
-								g = {TextTransparency = 0}
-							}):Play()
-							tw({
-								v = SelectedFrame_1,
-								t = 0.15,
-								s = "Exponential",
-								d = "Out",
-								g = {BackgroundTransparency = 0.3}
-							}):Play()
-							tw({
-								v = DropdownSelect,
-								t = 0.15,
-								s = "Exponential",
-								d = "Out",
-								g = {Size = UDim2.new(1, 0,0, 0)}
-							}):Play()
-							isOpen = false
-							Value = text
-							Selected_1.Text = text
-							Callback(Selected_1.Text)
-						end
-					end)
-
-					local function isValueInTable(val, tbl)
-						if type(tbl) ~= "table" then
-							return false
-						end
-
-						for _, v in pairs(tbl) do
-							if v == val then
-								return true
-							end
-						end
-						return false
-					end
-
-					delay(0,function()
-						if Multi then
-							if isValueInTable(text, Value) then
-								tw({
-									v = Title_1,
-									t = 0.15,
-									s = "Exponential",
-									d = "Out",
-									g = {TextTransparency = 0}
-								}):Play()
-								tw({
-									v = SelectedFrame_1,
-									t = 0.15,
-									s = "Exponential",
-									d = "Out",
-									g = {BackgroundTransparency = 0.3}
-								}):Play()
-
-								selectedValues[text] = true
-								local selectedList = {}
-								for i, v in pairs(selectedValues) do
-									table.insert(selectedList, i)
-								end
-								if #selectedList > 0 then
-									Selected_1.Text = table.concat(selectedList, ", ")
-								else
-									Selected_1.Text = ""
-								end
-								pcall(function()
-									Callback(selectedList)
-								end)
-							end
-						else
-							if text == Value then
-								tw({
-									v = Title_1,
-									t = 0.15,
-									s = "Exponential",
-									d = "Out",
-									g = {TextTransparency = 0}
-								}):Play()
-								tw({
-									v = SelectedFrame_1,
-									t = 0.15,
-									s = "Exponential",
-									d = "Out",
-									g = {BackgroundTransparency = 0.3}
-								}):Play()
-
-								Value = text
-								Selected_1.Text = text
-								Callback(Selected_1.Text)
-							end
-						end
-					end)
-				end
-
-				for i,v in ipairs(List) do
-					itemslist:AddList(v, i)
-				end
-
-				UIListLayout_1:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
-					ScrollingFrame_1.CanvasSize = UDim2.new(0, 0, 0, UIListLayout_1.AbsoluteContentSize.Y + 5)
-				end)
-
-				return itemslist
 			end
 			function Fetching.Main:CreateKeybind(info)
 				local Title = info.Title
