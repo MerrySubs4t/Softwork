@@ -1,6 +1,6 @@
 local _index = {}
 local _Library = {}
-
+_translate=function(en,th)if _G.Thailand or getgenv().Thai or _G.Thai then return tostring(th)else return tostring(en)end end;
 local Service = {
 	TweenService = game:GetService("TweenService"),
 	UserInputService = game:GetService("UserInputService")
@@ -296,6 +296,7 @@ function _Library:Dialog(info)
 	TextLabel_1.Text = Title
 	TextLabel_1.TextColor3 = Color3.fromRGB(255,255,255)
 	TextLabel_1.TextSize = 20
+	TextLabel_1.RichText = true
 
 	UIGradient_4.Parent = TextLabel_1
 	UIGradient_4.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(85, 170, 255)), ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 85, 255))}
@@ -314,6 +315,7 @@ function _Library:Dialog(info)
 	TextLabel_2.TextColor3 = Color3.fromRGB(255,255,255)
 	TextLabel_2.TextSize = 12
 	TextLabel_2.TextYAlignment = Enum.TextYAlignment.Top
+	TextLabel_2.RichText = true
 
 	Frame_3.Parent = Main_2
 	Frame_3.AnchorPoint = Vector2.new(0.5, 0.5)
