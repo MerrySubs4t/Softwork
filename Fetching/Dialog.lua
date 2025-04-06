@@ -148,8 +148,8 @@ function _index:ClickEffect(c, p)
 end
 
 function _Library:Dialog(info)
-	local Title = info.Title or "Window Dialog"
-	local Desc = info.Desc or "Descriptions"
+	local Title = info.Title
+	local Desc = info.Desc
 	local Banner = info.Banner or _index:GetIcon(138127867432976)
 	local Callback = info.Callback or function()end 
 
@@ -293,7 +293,7 @@ function _Library:Dialog(info)
 	TextLabel_1.Position = UDim2.new(0.5, 0,0.0879999995, 0)
 	TextLabel_1.Size = UDim2.new(0.899999976, 0,0.162, 0)
 	TextLabel_1.Font = Enum.Font.GothamBold
-	TextLabel_1.Text = tostring(Title)
+	TextLabel_1.Text = Title
 	TextLabel_1.TextColor3 = Color3.fromRGB(255,255,255)
 	TextLabel_1.TextSize = 20
 
@@ -310,7 +310,7 @@ function _Library:Dialog(info)
 	TextLabel_2.Position = UDim2.new(0.5, 0,0.569999993, 0)
 	TextLabel_2.Size = UDim2.new(0.899999976, 0,0.777999997, 0)
 	TextLabel_2.Font = Enum.Font.GothamBold
-	TextLabel_2.Text = tostring(Desc)
+	TextLabel_2.Text = Desc
 	TextLabel_2.TextColor3 = Color3.fromRGB(255,255,255)
 	TextLabel_2.TextSize = 12
 	TextLabel_2.TextYAlignment = Enum.TextYAlignment.Top
