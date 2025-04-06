@@ -349,7 +349,7 @@ function _Library:Dialog(info)
 		}):Play()
 		ImageLabel_1:Destroy()
 		task.wait(0.3)
-		Main_1:Destroy()
+		DialogNotify:Destroy()
 	end)
 
 	UICorner_6.Parent = Frame_4
