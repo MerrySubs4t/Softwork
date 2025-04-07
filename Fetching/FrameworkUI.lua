@@ -732,12 +732,11 @@ function Fetching:Window(info)
 			SectionTitle_1.BackgroundTransparency = 1
 			SectionTitle_1.BorderColor3 = Color3.fromRGB(0,0,0)
 			SectionTitle_1.BorderSizePixel = 0
-			SectionTitle_1.Size = UDim2.new(1, 0,0, 20)
+			SectionTitle_1.Size = UDim2.new(0.9, 0,0, 20)
 			SectionTitle_1.Font = Enum.Font.GothamBold
 			SectionTitle_1.Text = tostring(Title)
 			SectionTitle_1.TextColor3 = Color3.fromRGB(255,255,255)
-			SectionTitle_1.TextSize = 12
-			SectionTitle_1.TextYAlignment = Enum.TextYAlignment.Bottom
+			SectionTitle_1.TextSize = 13
 
 			Line_2.Name = "Line"
 			Line_2.Parent = Section_1
