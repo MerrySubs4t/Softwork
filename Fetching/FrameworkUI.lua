@@ -1,4 +1,3 @@
-
 Fetching = {}
 local ScreenUI = Instance.new("ScreenGui")
 ScreenUI.Name = "Fetching"
@@ -1370,7 +1369,7 @@ function Fetching:Window(info)
 					ScrollingFrame_1z.CanvasSize = UDim2.new(0, 0, 0, UIListLayout_1.AbsoluteContentSize.Y + 5)
 				end)
 
-				return itemslist, NewValue
+				return itemslist
 			end
 
 			function Fetching.Main:Video(info)
@@ -1722,7 +1721,7 @@ function Fetching:Window(info)
 				Desc_1.Text = tostring(Desc)
 				Desc_1.TextColor3 = Color3.fromRGB(255,255,255)
 				Desc_1.TextSize = 8
-				Desc_1.TextTransparency = 0.5
+				Desc_1.TextTransparency = 0
 				Desc_1.TextXAlignment = Enum.TextXAlignment.Left
 				Desc_1.TextWrapped = true
 				Desc_1.RichText = true
