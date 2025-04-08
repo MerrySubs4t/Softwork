@@ -140,9 +140,9 @@ function Fetching:Window(info)
 	CloseUI.BackgroundColor3 = Color3.fromRGB(0,0,0)
 	CloseUI.BorderColor3 = Color3.fromRGB(0,0,0)
 	CloseUI.BorderSizePixel = 0
-	CloseUI.Position = UDim2.new(0.01, 158,0.99, -565)
+	CloseUI.Position = UDim2.new(0.05, 0,0.3, 0)
 	CloseUI.Size = UDim2.new(0, 50,0, 50)
-	CloseUI.BackgroundTransparency = 0.2
+	CloseUI.BackgroundTransparency = 0.35
 	CloseUI.Text = ""
 
 	lak(CloseUI)
@@ -279,7 +279,7 @@ function Fetching:Window(info)
 	end)
 
 	game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
-		if not gameProcessed and input.KeyCode == Enum.KeyCode.LeftControl then
+		if not gameProcessed and input.KeyCode == Enum.KeyCode.F2 then
 			closeopenui()
 		end
 	end)
