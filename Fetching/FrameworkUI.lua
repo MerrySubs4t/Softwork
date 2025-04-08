@@ -140,7 +140,7 @@ function Fetching:Window(info)
 	CloseUI.BackgroundColor3 = Color3.fromRGB(0,0,0)
 	CloseUI.BorderColor3 = Color3.fromRGB(0,0,0)
 	CloseUI.BorderSizePixel = 0
-	CloseUI.Position = UDim2.new(0.00999999978, 0,0.99000001, 0)
+	CloseUI.Position = UDim2.new(0.01, 158,0.99, -565)
 	CloseUI.Size = UDim2.new(0, 50,0, 50)
 	CloseUI.BackgroundTransparency = 0.2
 	CloseUI.Text = ""
@@ -1750,7 +1750,7 @@ function Fetching:Window(info)
 				ImageID_1.BorderColor3 = Color3.fromRGB(0,0,0)
 				ImageID_1.BorderSizePixel = 0
 				ImageID_1.Position = UDim2.new(0.215, 0,0.5, 0)
-				ImageID_1.Size = UDim2.new(0, 40,0, 40)
+				ImageID_1.Size = UDim2.new(0, 35,0, 35)
 				ImageID_1.Image = Icon
 
 				UICorner_2.Parent = ImageID_1
