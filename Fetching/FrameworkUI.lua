@@ -1698,7 +1698,7 @@ function Fetching:Window(info)
 				TextHub_1.BackgroundTransparency = 1
 				TextHub_1.BorderColor3 = Color3.fromRGB(0,0,0)
 				TextHub_1.BorderSizePixel = 0
-				TextHub_1.Position = UDim2.new(0.25, 0,0.5, 0)
+				TextHub_1.Position = UDim2.new(0.2, 0,0.5, 0)
 				TextHub_1.Size = UDim2.new(0.75, 0,0.800000012, 0)
 
 				UIListLayout_1.Parent = TextHub_1
@@ -1749,11 +1749,12 @@ function Fetching:Window(info)
 				ImageID_1.BackgroundTransparency = 1
 				ImageID_1.BorderColor3 = Color3.fromRGB(0,0,0)
 				ImageID_1.BorderSizePixel = 0
-				ImageID_1.Position = UDim2.new(0.215, 0,0.5, 0)
+				ImageID_1.Position = UDim2.new(0.18, 0,0.5, 0)
 				ImageID_1.Size = UDim2.new(0, 35,0, 35)
 				ImageID_1.Image = Icon
 
 				UICorner_2.Parent = ImageID_1
+				
 				UICorner_2.CornerRadius = UDim.new(0,4)
 
 				UIListLayout_1:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
