@@ -1666,7 +1666,7 @@ function Fetching:Window(info)
 				local UICorner_3 = Instance.new("UICorner")
 				local Click_1 = Instance.new("TextButton")
 				local Stroke = Instance.new("UIStroke")
-				local Icon = Instance.new("ImageLabel")
+				local Icon5 = Instance.new("ImageLabel")
 
 				Toggle.Name = "Toggle"
 				Toggle.Parent = Section_1
@@ -1752,13 +1752,13 @@ function Fetching:Window(info)
 				Click_1.Text = ""
 				Click_1.TextSize = 14
 
-				Icon.BackgroundTransparency = 1
-				Icon.AnchorPoint = Vector2.new(0.5,0.5)
-				Icon.Position = UDim2.new(0.1,0,0.5,0)
-				Icon.Parent = ListfunctionToggle_1
-				Icon.Image = GetIcon(Iconz)
-				Icon.Size = UDim2.new(0,30,0,30)
-				Icon.ImageTransparency = 0.5
+				Icon5.BackgroundTransparency = 1
+				Icon5.AnchorPoint = Vector2.new(0.5,0.5)
+				Icon5.Position = UDim2.new(0.1,0,0.5,0)
+				Icon5.Parent = ListfunctionToggle_1
+				Icon5.Image = Iconz
+				Icon5.Size = UDim2.new(0,30,0,30)
+				Icon5.ImageTransparency = 0.5
 
 				local function ToggleC(Value)
 					if not Value then 
@@ -1856,7 +1856,7 @@ function Fetching:Window(info)
 				end
 
 				function NewValue:SetImage(a)
-					Icon = GetIcon(a)
+					Icon5 = a
 				end
 
 				function NewValue:SetVisible(a)
@@ -2016,7 +2016,7 @@ function Fetching:Window(info)
 				local UIListLayout_1 = Instance.new("UIListLayout")
 				local Desc_1 = Instance.new("TextLabel")
 				local Title_1 = Instance.new("TextLabel")
-				local ImageID_1 = Instance.new("ImageLabel")
+				local ImageID_1x = Instance.new("ImageLabel")
 				local UICorner_2 = Instance.new("UICorner")
 
 				Image.Name = "Image"
@@ -2104,15 +2104,15 @@ function Fetching:Window(info)
 				Title_1.TextXAlignment = Enum.TextXAlignment.Left
 				Title_1.RichText = true
 
-				ImageID_1.Parent = Inside_1
-				ImageID_1.AnchorPoint = Vector2.new(1, 0.5)
-				ImageID_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
-				ImageID_1.BackgroundTransparency = 1
-				ImageID_1.BorderColor3 = Color3.fromRGB(0,0,0)
-				ImageID_1.BorderSizePixel = 0
-				ImageID_1.Position = UDim2.new(0.18, 0,0.5, 0)
-				ImageID_1.Size = UDim2.new(0, 35,0, 35)
-				ImageID_1.Image = Icon
+				ImageID_1x.Parent = Inside_1
+				ImageID_1x.AnchorPoint = Vector2.new(1, 0.5)
+				ImageID_1x.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				ImageID_1x.BackgroundTransparency = 1
+				ImageID_1x.BorderColor3 = Color3.fromRGB(0,0,0)
+				ImageID_1x.BorderSizePixel = 0
+				ImageID_1x.Position = UDim2.new(0.18, 0,0.5, 0)
+				ImageID_1x.Size = UDim2.new(0, 35,0, 35)
+				ImageID_1x.Image = Icon
 				
 				local ImageLabel_1 = Instance.new("ImageLabel")
 				ImageLabel_1.Parent = Inside_1
@@ -2127,7 +2127,7 @@ function Fetching:Window(info)
 				ImageLabel_1.Image = "rbxassetid://13858857904"
 				ImageLabel_1.ImageTransparency = 0.5
 
-				UICorner_2.Parent = ImageID_1
+				UICorner_2.Parent = ImageID_1x
 
 				UICorner_2.CornerRadius = UDim.new(0,4)
 
@@ -2138,7 +2138,7 @@ function Fetching:Window(info)
 				local NewValue = {}
 
 				function NewValue:SetImage(a)
-					ImageID_1.Image = a
+					ImageID_1x.Image = a
 				end
 
 				function NewValue:SetVisible(a)
