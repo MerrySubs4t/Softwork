@@ -1756,7 +1756,7 @@ function Fetching:Window(info)
 				Icon.AnchorPoint = Vector2.new(0.5,0.5)
 				Icon.Position = UDim2.new(0.1,0,0.5,0)
 				Icon.Parent = ListfunctionToggle_1
-				Icon.Image = Iconz
+				Icon.Image = GetIcon(Iconz)
 				Icon.Size = UDim2.new(0,30,0,30)
 				Icon.ImageTransparency = 0.5
 
@@ -1973,6 +1973,159 @@ function Fetching:Window(info)
 				ImageID_1.Position = UDim2.new(0.18, 0,0.5, 0)
 				ImageID_1.Size = UDim2.new(0, 35,0, 35)
 				ImageID_1.Image = Icon
+
+				UICorner_2.Parent = ImageID_1
+
+				UICorner_2.CornerRadius = UDim.new(0,4)
+
+				UIListLayout_1:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+					Image.Size = UDim2.new(1, 0, 0, UIListLayout_1.AbsoluteContentSize.Y + 22)
+				end)
+
+				local NewValue = {}
+
+				function NewValue:SetImage(a)
+					ImageID_1.Image = a
+				end
+
+				function NewValue:SetVisible(a)
+					Image.Visible = a
+				end
+
+				function NewValue:SetTitle(b)
+					Title_1.Text = b
+				end
+
+				function NewValue:SetDesc(c)
+					Desc_1.Text = c
+				end
+
+				return NewValue
+			end
+			function Fetching.Main:ButtonImage(info)
+
+				local Title = info.Title
+				local Desc = info.Desc
+				local Icon = info.Icon
+				local c = info.Callback
+
+				local Image = Instance.new("Frame")
+				local Inside_1 = Instance.new("Frame")
+				local UICorner_1 = Instance.new("UICorner")
+				local TextHub_1 = Instance.new("Frame")
+				local UIListLayout_1 = Instance.new("UIListLayout")
+				local Desc_1 = Instance.new("TextLabel")
+				local Title_1 = Instance.new("TextLabel")
+				local ImageID_1 = Instance.new("ImageLabel")
+				local UICorner_2 = Instance.new("UICorner")
+
+				Image.Name = "Image"
+				Image.Parent = Section_1
+				Image.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				Image.BackgroundTransparency = 1
+				Image.BorderColor3 = Color3.fromRGB(0,0,0)
+				Image.BorderSizePixel = 0
+				Image.LayoutOrder = 2
+				Image.Size = UDim2.new(1, 0,0, 50)
+
+				Inside_1.Name = "Inside"
+				Inside_1.Parent = Image
+				Inside_1.AnchorPoint = Vector2.new(0.5, 0.5)
+				Inside_1.BackgroundColor3 = Color3.fromRGB(27,27,27)
+				Inside_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				Inside_1.BorderSizePixel = 0
+				Inside_1.Position = UDim2.new(0.5, 0,0.5, 0)
+				Inside_1.Size = UDim2.new(0.95, 0,1, 0)
+				Inside_1.ClipsDescendants = true
+				
+				local b = click(Inside_1)
+				b.MouseButton1Click:Connect(function()
+					ButtoneffectClick(b, Inside_1)
+					c()
+				end)
+
+				local Stroke = Instance.new("UIStroke")
+				Stroke.Parent = Inside_1
+				Stroke.Thickness = 1
+				Stroke.Color = Color3.fromRGB(56,56,56)
+
+				UICorner_1.Parent = Inside_1
+				UICorner_1.CornerRadius = UDim.new(0,5)
+
+				TextHub_1.Name = "TextHub"
+				TextHub_1.Parent = Inside_1
+				TextHub_1.AnchorPoint = Vector2.new(0, 0.5)
+				TextHub_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				TextHub_1.BackgroundTransparency = 1
+				TextHub_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				TextHub_1.BorderSizePixel = 0
+				TextHub_1.Position = UDim2.new(0.2, 0,0.5, 0)
+				TextHub_1.Size = UDim2.new(0.75, 0,0.800000012, 0)
+
+				UIListLayout_1.Parent = TextHub_1
+				UIListLayout_1.Padding = UDim.new(0,2)
+				UIListLayout_1.SortOrder = Enum.SortOrder.LayoutOrder
+				UIListLayout_1.VerticalAlignment = Enum.VerticalAlignment.Center
+
+				Desc_1.Name = "Desc"
+				Desc_1.Parent = TextHub_1
+				Desc_1.AutomaticSize = Enum.AutomaticSize.Y
+				Desc_1.AnchorPoint = Vector2.new(0.5, 0.5)
+				Desc_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				Desc_1.BackgroundTransparency = 1
+				Desc_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				Desc_1.BorderSizePixel = 0
+				Desc_1.LayoutOrder = 1
+				Desc_1.Position = UDim2.new(0.248750001, 0,0.0944999978, 0)
+				Desc_1.Size = UDim2.new(0, 175,0, 11)
+				Desc_1.Font = Enum.Font.GothamBold
+				Desc_1.Text = tostring(Desc)
+				Desc_1.TextColor3 = Color3.fromRGB(255,255,255)
+				Desc_1.TextSize = 8
+				Desc_1.TextTransparency = 0
+				Desc_1.TextXAlignment = Enum.TextXAlignment.Left
+				Desc_1.TextWrapped = true
+				Desc_1.RichText = true
+
+				Title_1.Name = "Title"
+				Title_1.Parent = TextHub_1
+				Title_1.AutomaticSize = Enum.AutomaticSize.Y
+				Title_1.AnchorPoint = Vector2.new(0.5, 0.5)
+				Title_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				Title_1.BackgroundTransparency = 1
+				Title_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				Title_1.BorderSizePixel = 0
+				Title_1.Position = UDim2.new(0.248750001, 0,0.0644999966, 0)
+				Title_1.Size = UDim2.new(0, 130,0, 11)
+				Title_1.Font = Enum.Font.GothamBold
+				Title_1.Text = tostring(Title)
+				Title_1.TextColor3 = Color3.fromRGB(255,255,255)
+				Title_1.TextSize = 11
+				Title_1.TextXAlignment = Enum.TextXAlignment.Left
+				Title_1.RichText = true
+
+				ImageID_1.Parent = Inside_1
+				ImageID_1.AnchorPoint = Vector2.new(1, 0.5)
+				ImageID_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				ImageID_1.BackgroundTransparency = 1
+				ImageID_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				ImageID_1.BorderSizePixel = 0
+				ImageID_1.Position = UDim2.new(0.18, 0,0.5, 0)
+				ImageID_1.Size = UDim2.new(0, 35,0, 35)
+				ImageID_1.Image = Icon
+				
+				local ImageLabel_1 = Instance.new("ImageLabel")
+				ImageLabel_1.Parent = Inside_1
+				ImageLabel_1.AnchorPoint = Vector2.new(1, 0.5)
+				ImageLabel_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				ImageLabel_1.BackgroundTransparency = 1
+				ImageLabel_1.BorderColor3 = Color3.fromRGB(0,0,0)
+				ImageLabel_1.BorderSizePixel = 0
+				ImageLabel_1.Position = UDim2.new(0.95, 0,0.5, 0)
+				ImageLabel_1.Rotation = 270
+				ImageLabel_1.Size = UDim2.new(0, 15,0, 15)
+				ImageLabel_1.Image = "rbxassetid://13858857904"
+				ImageLabel_1.ImageTransparency = 0.5
 
 				UICorner_2.Parent = ImageID_1
 
