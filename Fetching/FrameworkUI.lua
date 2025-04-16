@@ -1792,7 +1792,7 @@ function Fetching:Window(info)
 							g = {ImageTransparency = 1, Size = UDim2.new(0, 0,0, 0), Rotation = 360}
 						}):Play()
 						tw({
-							v = Icon,
+							v = Icon5,
 							t = 0.3,
 							s = "Linear",
 							d = "Out",
@@ -1832,7 +1832,7 @@ function Fetching:Window(info)
 							}):Play()
 						end)
 						tw({
-							v = Icon,
+							v = Icon5,
 							t = 0.3,
 							s = "Linear",
 							d = "Out",
@@ -1856,7 +1856,7 @@ function Fetching:Window(info)
 				end
 
 				function NewValue:SetImage(a)
-					Icon5 = a
+					Icon5.Image = a
 				end
 
 				function NewValue:SetVisible(a)
