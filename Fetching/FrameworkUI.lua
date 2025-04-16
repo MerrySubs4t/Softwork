@@ -1756,7 +1756,7 @@ function Fetching:Window(info)
 				Icon.AnchorPoint = Vector2.new(0.5,0.5)
 				Icon.Position = UDim2.new(0.1,0,0.5,0)
 				Icon.Parent = ListfunctionToggle_1
-				Icon.Image = GetIcon(Iconz)
+				Icon.Image = Iconz
 				Icon.Size = UDim2.new(0,30,0,30)
 				Icon.ImageTransparency = 0.5
 
