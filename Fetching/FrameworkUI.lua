@@ -1648,7 +1648,7 @@ function Fetching:Window(info)
 
 				return NewValue
 			end
-			
+
 			function Fetching.Main:ImageToggle(info)
 
 				local Title = info.Title
@@ -1690,13 +1690,6 @@ function Fetching:Window(info)
 				Stroke.Thickness = 0
 				Stroke.Color = Color3.fromRGB(56,56,56)
 
-				UIListLayout_1.Parent = ListfunctionToggle_1
-				UIListLayout_1.Padding = UDim.new(0,8)
-				UIListLayout_1.FillDirection = Enum.FillDirection.Horizontal
-				UIListLayout_1.HorizontalAlignment = Enum.HorizontalAlignment.Center
-				UIListLayout_1.SortOrder = Enum.SortOrder.LayoutOrder
-				UIListLayout_1.VerticalAlignment = Enum.VerticalAlignment.Center
-
 				Title_1.Name = "Title"
 				Title_1.Parent = ListfunctionToggle_1
 				Title_1.AnchorPoint = Vector2.new(0.5,0.5)
@@ -1721,6 +1714,7 @@ function Fetching:Window(info)
 				ToggleO_1.Position = UDim2.new(0.9,0,0.5,0)
 				ToggleO_1.LayoutOrder = 1
 				ToggleO_1.Size = UDim2.new(0, 20,0, 20)
+				ToggleO_1.AnchorPoint = Vector2.new(0.5,0.5)
 
 				UICorner_1.Parent = ToggleO_1
 				UICorner_1.CornerRadius = UDim.new(0,6)
@@ -1757,7 +1751,7 @@ function Fetching:Window(info)
 				Click_1.Font = Enum.Font.SourceSans
 				Click_1.Text = ""
 				Click_1.TextSize = 14
-				
+
 				Icon.BackgroundTransparency = 1
 				Icon.AnchorPoint = Vector2.new(0.5,0.5)
 				Icon.Position = UDim2.new(0.1,0,0.5,0)
@@ -1860,7 +1854,7 @@ function Fetching:Window(info)
 					Value = a
 					ToggleC(Value)
 				end
-				
+
 				function NewValue:SetImage(a)
 					Icon = GetIcon(a)
 				end
