@@ -1460,6 +1460,7 @@ function Fetching:Window(info)
 
 				local Toggle = Instance.new("Frame")
 				local ListfunctionToggle_1 = Instance.new("Frame")
+				local UIListLayout_1 = Instance.new("UIListLayout")
 				local Title_1 = Instance.new("TextLabel")
 				local ToggleO_1 = Instance.new("Frame")
 				local UICorner_1 = Instance.new("UICorner")
@@ -1476,7 +1477,7 @@ function Fetching:Window(info)
 				Toggle.BorderColor3 = Color3.fromRGB(0,0,0)
 				Toggle.BorderSizePixel = 0
 				Toggle.LayoutOrder = 2
-				Toggle.Size = UDim2.new(1, 0,0, 42)
+				Toggle.Size = UDim2.new(1, 0,0, 35)
 
 				ListfunctionToggle_1.Name = "ListfunctionToggle"
 				ListfunctionToggle_1.Parent = Toggle
@@ -1485,22 +1486,26 @@ function Fetching:Window(info)
 				ListfunctionToggle_1.BorderColor3 = Color3.fromRGB(0,0,0)
 				ListfunctionToggle_1.BorderSizePixel = 0
 				ListfunctionToggle_1.Position = UDim2.new(0.5, 0,0.5, 0)
-				ListfunctionToggle_1.Size = UDim2.new(0.95, 0,0, 42)
+				ListfunctionToggle_1.Size = UDim2.new(0.95, 0,0, 35)
 
 				Stroke.Parent = ListfunctionToggle_1
 				Stroke.Thickness = 0
 				Stroke.Color = Color3.fromRGB(56,56,56)
 
+				UIListLayout_1.Parent = ListfunctionToggle_1
+				UIListLayout_1.Padding = UDim.new(0,8)
+				UIListLayout_1.FillDirection = Enum.FillDirection.Horizontal
+				UIListLayout_1.HorizontalAlignment = Enum.HorizontalAlignment.Center
+				UIListLayout_1.SortOrder = Enum.SortOrder.LayoutOrder
+				UIListLayout_1.VerticalAlignment = Enum.VerticalAlignment.Center
 
 				Title_1.Name = "Title"
 				Title_1.Parent = ListfunctionToggle_1
-				Title_1.AnchorPoint = Vector2.new(0.5,0.5)
 				Title_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
 				Title_1.BackgroundTransparency = 1
-				Title_1.Position = UDim2.new(0.39,0,0.5,0)
 				Title_1.BorderColor3 = Color3.fromRGB(0,0,0)
 				Title_1.BorderSizePixel = 0
-				Title_1.Size = UDim2.new(0.7, 0,1, 0)
+				Title_1.Size = UDim2.new(0.800000012, 0,1, 0)
 				Title_1.Font = Enum.Font.GothamBold
 				Title_1.Text = tostring(Title)
 				Title_1.TextColor3 = Color3.fromRGB(255,255,255)
@@ -1511,12 +1516,10 @@ function Fetching:Window(info)
 				ToggleO_1.Name = "ToggleO"
 				ToggleO_1.Parent = ListfunctionToggle_1
 				ToggleO_1.BackgroundColor3 = Color3.fromRGB(18,18,18)
-				ToggleO_1.AnchorPoint = Vector2.new(0.5,0.5)
-				ToggleO_1.Position = UDim2.new(0.9,0,0.5,0)
 				ToggleO_1.BorderColor3 = Color3.fromRGB(0,0,0)
 				ToggleO_1.BorderSizePixel = 0
 				ToggleO_1.LayoutOrder = 1
-				ToggleO_1.Size = UDim2.new(0, 20,0, 20)
+				ToggleO_1.Size = UDim2.new(0, 17,0, 17)
 
 				UICorner_1.Parent = ToggleO_1
 				UICorner_1.CornerRadius = UDim.new(0,6)
@@ -1650,7 +1653,7 @@ function Fetching:Window(info)
 
 				local Title = info.Title
 				local Value = info.Value
-				local Iconzz = info.Icon
+				local Icon = info.Icon
 				local Callback = info.CallBack or function() end
 
 				local Toggle = Instance.new("Frame")
@@ -1687,6 +1690,13 @@ function Fetching:Window(info)
 				Stroke.Thickness = 0
 				Stroke.Color = Color3.fromRGB(56,56,56)
 
+				UIListLayout_1.Parent = ListfunctionToggle_1
+				UIListLayout_1.Padding = UDim.new(0,8)
+				UIListLayout_1.FillDirection = Enum.FillDirection.Horizontal
+				UIListLayout_1.HorizontalAlignment = Enum.HorizontalAlignment.Center
+				UIListLayout_1.SortOrder = Enum.SortOrder.LayoutOrder
+				UIListLayout_1.VerticalAlignment = Enum.VerticalAlignment.Center
+
 				Title_1.Name = "Title"
 				Title_1.Parent = ListfunctionToggle_1
 				Title_1.AnchorPoint = Vector2.new(0.5,0.5)
@@ -1711,7 +1721,6 @@ function Fetching:Window(info)
 				ToggleO_1.Position = UDim2.new(0.9,0,0.5,0)
 				ToggleO_1.LayoutOrder = 1
 				ToggleO_1.Size = UDim2.new(0, 20,0, 20)
-				ToggleO_1.AnchorPoint = Vector2.new(0.5,0.5)
 
 				UICorner_1.Parent = ToggleO_1
 				UICorner_1.CornerRadius = UDim.new(0,6)
@@ -1753,7 +1762,7 @@ function Fetching:Window(info)
 				Icon.AnchorPoint = Vector2.new(0.5,0.5)
 				Icon.Position = UDim2.new(0.1,0,0.5,0)
 				Icon.Parent = ListfunctionToggle_1
-				Icon.Image = GetIcon(Iconzz)
+				Icon.Image = GetIcon(Icon)
 				Icon.Size = UDim2.new(0,30,0,30)
 				Icon.ImageTransparency = 0.5
 
@@ -1853,7 +1862,7 @@ function Fetching:Window(info)
 				end
 				
 				function NewValue:SetImage(a)
-					Icon.Image = GetIcon(a)
+					Icon = GetIcon(a)
 				end
 
 				function NewValue:SetVisible(a)
@@ -1982,7 +1991,7 @@ function Fetching:Window(info)
 				local NewValue = {}
 
 				function NewValue:SetImage(a)
-					ImageID_1.Image = Icon
+					ImageID_1.Image = a
 				end
 
 				function NewValue:SetVisible(a)
