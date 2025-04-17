@@ -1,0 +1,11 @@
+task.delay(2, function()
+	if hookfunction and not islclosure(hookfunction) then
+		hookfunction(require(Service.ReplicatedStorage.Effect.Container.Death), function()
+		end)
+		hookfunction(require(Service.ReplicatedStorage.Effect.Container.Respawn), function()
+		end)
+		hookfunction(require(Service.ReplicatedStorage:WaitForChild("GuideModule")).ChangeDisplayedNPC, function()
+			return
+		end)
+	end
+end)
