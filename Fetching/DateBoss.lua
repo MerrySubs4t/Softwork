@@ -1,4 +1,4 @@
-return = {
+return {
 	{ name = "Core", setting = "Factory", world = 'w2' },
 	{ name = "Thunder God", setting = "Auto Pole 1", hop = "HOP Pole 1", world = "w1" },
 	{ name = "Fishman Lord", setting = "Auto Trident", hop = "HOP Trident", world = "w1" },
