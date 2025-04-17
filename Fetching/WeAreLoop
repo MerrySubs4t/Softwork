@@ -1,0 +1,7 @@
+return function(C)
+    task.spawn(function()
+        while task.wait() do
+            C()
+        end
+    end)
+end
