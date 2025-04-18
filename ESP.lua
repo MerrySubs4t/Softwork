@@ -10,7 +10,7 @@ end
 
 local ESPChange = Instance.new("BindableEvent")
 local ESP; ESP = {
-	ESPValues = setmetatable({}, {
+	Value = setmetatable({}, {
 		__index = function(self, name)
 			return ESP.Values[name]
 		end,
@@ -62,7 +62,7 @@ local function ESPz(obj, espSettings)
 		hl.FillColor = col
 		hl.FillTransparency = 0.8
 		hl.OutlineTransparency = 0.8
-		hl.Enabled = not not ESP.ESPValues[espSettings.ESPName]
+		hl.Enabled = not not ESP.Value[espSettings.ESPName]
 
 		if not espSettings.HighlightEnabled then
 			hl:Destroy()
@@ -73,7 +73,7 @@ local function ESPz(obj, espSettings)
 		bg.AlwaysOnTop = true
 		bg.Size = UDim2.fromOffset(100, 100)
 		bg.MaxDistance = math.huge
-		bg.Enabled = not not ESP.ESPValues[espSettings.ESPName]
+		bg.Enabled = not not ESP.Value[espSettings.ESPName]
 
 		local circle = bg:FindFirstChild("Frame") or Instance.new("Frame", bg)
 		circle.Position = UDim2.fromScale(0.5, 0.5)
@@ -136,9 +136,9 @@ local function ESPz(obj, espSettings)
 	end
 	con1 = ESPChange.Event:Connect(function()
 		updateESP()
-		if ESP.ESPValues.RGBESP and not con3 then
+		if ESP.Value.RGBESP and not con3 then
 			doCon3()
-		elseif not ESP.ESPValues.RGBESP and con3 then
+		elseif not ESP.Value.RGBESP and con3 then
 			con3:Disconnect()
 			con3 = nil
 			cons[obj][3] = nil
@@ -159,7 +159,7 @@ local function ESPz(obj, espSettings)
 	end)
 	cons[obj][1] = con1
 	cons[obj][2] = con2
-	if ESP.ESPValues.RGBESP then
+	if ESP.Value.RGBESP then
 		doCon3()
 	end
 end
