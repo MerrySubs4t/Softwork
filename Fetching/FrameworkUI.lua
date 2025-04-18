@@ -832,9 +832,15 @@ function Fetching:Window(info)
 				else
 					Selected_1.Text = Value
 				end
+				
+				local UIGD = Instance.new("UIGradient")
+				UIGD.Rotation = 90
+				UIGD.Parent = Selected_1
+				UIGD.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, MainColor), ColorSequenceKeypoint.new(1, DropColor)}
+				
 				Selected_1.TextColor3 = Color3.fromRGB(255,255,255)
 				Selected_1.TextSize = 8
-				Selected_1.TextTransparency = 0.5
+				Selected_1.TextTransparency = 0
 				Selected_1.TextXAlignment = Enum.TextXAlignment.Left
 
 				Title_1.Name = "Title"
@@ -861,6 +867,11 @@ function Fetching:Window(info)
 				ImageLabel_1.Position = UDim2.new(0.970000029, 0,0.5, 0)
 				ImageLabel_1.Size = UDim2.new(0, 17,0, 17)
 				ImageLabel_1.Image = "rbxassetid://129573215183311"
+				
+				local UIGD = Instance.new("UIGradient")
+				UIGD.Rotation = 90
+				UIGD.Parent = ImageLabel_1
+				UIGD.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, MainColor), ColorSequenceKeypoint.new(1, DropColor)}
 
 				Click_1.Name = "Click"
 				Click_1.Parent = Dropdown
@@ -1479,7 +1490,7 @@ function Fetching:Window(info)
 				Toggle.BorderColor3 = Color3.fromRGB(0,0,0)
 				Toggle.BorderSizePixel = 0
 				Toggle.LayoutOrder = 2
-				Toggle.Size = UDim2.new(1, 0,0, 35)
+				Toggle.Size = UDim2.new(1, 0,0, 42)
 
 				ListfunctionToggle_1.Name = "ListfunctionToggle"
 				ListfunctionToggle_1.Parent = Toggle
@@ -1488,14 +1499,14 @@ function Fetching:Window(info)
 				ListfunctionToggle_1.BorderColor3 = Color3.fromRGB(0,0,0)
 				ListfunctionToggle_1.BorderSizePixel = 0
 				ListfunctionToggle_1.Position = UDim2.new(0.5, 0,0.5, 0)
-				ListfunctionToggle_1.Size = UDim2.new(0.95, 0,0, 35)
+				ListfunctionToggle_1.Size = UDim2.new(0.95, 0,0, 42)
 
 				Stroke.Parent = ListfunctionToggle_1
 				Stroke.Thickness = 0
 				Stroke.Color = Color3.fromRGB(56,56,56)
 
 				UIListLayout_1.Parent = ListfunctionToggle_1
-				UIListLayout_1.Padding = UDim.new(0,8)
+				UIListLayout_1.Padding = UDim.new(0,0)
 				UIListLayout_1.FillDirection = Enum.FillDirection.Horizontal
 				UIListLayout_1.HorizontalAlignment = Enum.HorizontalAlignment.Center
 				UIListLayout_1.SortOrder = Enum.SortOrder.LayoutOrder
@@ -1521,22 +1532,27 @@ function Fetching:Window(info)
 				ToggleO_1.BorderColor3 = Color3.fromRGB(0,0,0)
 				ToggleO_1.BorderSizePixel = 0
 				ToggleO_1.LayoutOrder = 1
-				ToggleO_1.Size = UDim2.new(0, 17,0, 17)
+				ToggleO_1.Size = UDim2.new(0, 20,0, 20)
+				
+				local UIGD = Instance.new("UIGradient")
+				UIGD.Rotation = 0
+				UIGD.Parent = ToggleO_1
+				UIGD.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, MainColor), ColorSequenceKeypoint.new(1, DropColor)}
 
 				UICorner_1.Parent = ToggleO_1
-				UICorner_1.CornerRadius = UDim.new(0,6)
+				UICorner_1.CornerRadius = UDim.new(0,4)
 
 				done_1.Name = "done"
 				done_1.Parent = ToggleO_1
 				done_1.AnchorPoint = Vector2.new(0.5, 0.5)
-				done_1.BackgroundColor3 = Color3.fromRGB(27,27,27)
+				done_1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				done_1.BackgroundTransparency = 1
 				done_1.BorderColor3 = Color3.fromRGB(27,27,27)
 				done_1.Position = UDim2.new(0.5, 0,0.5, 0)
 				done_1.Size = UDim2.new(1, 0,1, 0)
 				done_1.ZIndex = 2
 				done_1.Image = "rbxassetid://3926305904"
-				done_1.ImageColor3 = Color3.fromRGB(27,27,27)
+				done_1.ImageColor3 = Color3.fromRGB(255, 255, 255)
 				done_1.ImageRectOffset = Vector2.new(644, 204)
 				done_1.ImageRectSize = Vector2.new(36, 36)
 				done_1.ImageTransparency = 1
@@ -1567,7 +1583,7 @@ function Fetching:Window(info)
 							t = 0.15,
 							s = "Linear",
 							d = "Out",
-							g = {BackgroundColor3 = Color3.fromRGB(18,18,18)}
+							g = {BackgroundColor3 = Color3.fromRGB(25,25,25)}
 						}):Play()
 						tw({
 							v = Stroke,
@@ -1717,9 +1733,14 @@ function Fetching:Window(info)
 				ToggleO_1.LayoutOrder = 1
 				ToggleO_1.Size = UDim2.new(0, 20,0, 20)
 				ToggleO_1.AnchorPoint = Vector2.new(0.5,0.5)
+				
+				local UIGD = Instance.new("UIGradient")
+				UIGD.Rotation = 0
+				UIGD.Parent = ToggleO_1
+				UIGD.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, MainColor), ColorSequenceKeypoint.new(1, DropColor)}
 
 				UICorner_1.Parent = ToggleO_1
-				UICorner_1.CornerRadius = UDim.new(0,6)
+				UICorner_1.CornerRadius = UDim.new(0,4)
 
 				done_1.Name = "done"
 				done_1.Parent = ToggleO_1
@@ -1731,7 +1752,7 @@ function Fetching:Window(info)
 				done_1.Size = UDim2.new(1, 0,1, 0)
 				done_1.ZIndex = 2
 				done_1.Image = "rbxassetid://3926305904"
-				done_1.ImageColor3 = Color3.fromRGB(27,27,27)
+				done_1.ImageColor3 = Color3.fromRGB(255, 255, 255)
 				done_1.ImageRectOffset = Vector2.new(644, 204)
 				done_1.ImageRectSize = Vector2.new(36, 36)
 				done_1.ImageTransparency = 1
@@ -1770,7 +1791,7 @@ function Fetching:Window(info)
 							t = 0.15,
 							s = "Linear",
 							d = "Out",
-							g = {BackgroundColor3 = Color3.fromRGB(18,18,18)}
+							g = {BackgroundColor3 = Color3.fromRGB(25,25,25)}
 						}):Play()
 						tw({
 							v = Stroke,
