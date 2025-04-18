@@ -7,6 +7,8 @@ local UserInputService = game:GetService("UserInputService")
 function Fetching:Window(info)
 	local Logo = info.Logo
 	local Size = info.Size
+	local MainColor = info.MainColor or Color3.fromRGB(0, 170, 255)
+	local DropColor = info.DropColor or Color3.fromRGB(105, 94, 255)
 	local Keybind = info.Keybind
 
 	local function GetIcon(i)
@@ -394,7 +396,7 @@ function Fetching:Window(info)
 
 		UIGD.Rotation = 180
 		UIGD.Parent = Tab_1
-		UIGD.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 170, 255)), ColorSequenceKeypoint.new(1, Color3.fromRGB(105, 94, 255))}
+		UIGD.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, MainColor), ColorSequenceKeypoint.new(1, DropColor)}
 
 
 		UICorner_2z.Parent = Tab_1
@@ -2374,6 +2376,7 @@ function Fetching:Window(info)
 				ButtonFrame_1.Parent = Button
 				ButtonFrame_1.AnchorPoint = Vector2.new(0.5, 0.5)
 				ButtonFrame_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+				ButtonFrame_1.BackgroundTransparency = 0
 				ButtonFrame_1.BorderColor3 = Color3.fromRGB(0,0,0)
 				ButtonFrame_1.BorderSizePixel = 0
 				ButtonFrame_1.Position = UDim2.new(0.5, 0,0.5, 0)
@@ -2392,11 +2395,11 @@ function Fetching:Window(info)
 				Title_1.Size = UDim2.new(1, 0,1, 0)
 				Title_1.Font = Enum.Font.GothamBold
 				Title_1.Text = tostring(Title)
-				Title_1.TextColor3 = Color3.fromRGB(204,204,204)
+				Title_1.TextColor3 = Color3.fromRGB(255,255,255)
 				Title_1.TextSize = 11
 
 				UIGradient_1.Parent = ButtonFrame_1
-				UIGradient_1.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(113, 113, 113)), ColorSequenceKeypoint.new(1, Color3.fromRGB(94, 94, 94))}
+				UIGradient_1.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, MainColor), ColorSequenceKeypoint.new(1, DropColor)}
 
 				Click_1.Name = "Click"
 				Click_1.Parent = Button
@@ -2551,6 +2554,8 @@ function Fetching:Window(info)
 
 				local ValueLine = Instance.new("Frame")
 				local UICornerBar_1 = Instance.new("UICorner")
+				local sks = Instance.new("UIStroke")
+				local gr = Instance.new("UIGradient")
 
 				ValueLine.Name = "ValueLine"
 				ValueLine.Parent = SliderBarValue_1
@@ -2559,7 +2564,15 @@ function Fetching:Window(info)
 				ValueLine.BorderColor3 = Color3.fromRGB(0,0,0)
 				ValueLine.BorderSizePixel = 0
 				ValueLine.Position = UDim2.new(1, 0,0.5, 0)
-				ValueLine.Size = UDim2.new(0, 6,0, 12)
+				ValueLine.Size = UDim2.new(0, 8,0, 8)
+				
+				sks.Parent = ValueLine
+				sks.Color = Color3.fromRGB(255, 255, 255)
+				sks.Thickness = 2.5
+				
+				gr.Parent = sks
+				gr.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, MainColor), ColorSequenceKeypoint.new(1, DropColor)}
+				gr.Rotation = 180
 
 				UICornerBar_1.Parent = ValueLine
 				UICornerBar_1.CornerRadius = UDim.new(1,0)
@@ -2568,7 +2581,7 @@ function Fetching:Window(info)
 				UICorner_3.CornerRadius = UDim.new(1,0)
 
 				UIGradient_1.Parent = SliderBarValue_1
-				UIGradient_1.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1, Color3.fromRGB(122, 122, 122))}
+				UIGradient_1.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, MainColor), ColorSequenceKeypoint.new(1, DropColor)}
 				UIGradient_1.Rotation = 0
 
 				Click_1.Name = "Click"
@@ -2593,7 +2606,7 @@ function Fetching:Window(info)
 				ValueBox_1.BorderColor3 = Color3.fromRGB(0,0,0)
 				ValueBox_1.BorderSizePixel = 0
 				ValueBox_1.Position = UDim2.new(0.95, 0,0.349999994, 0)
-				ValueBox_1.Size = UDim2.new(0, 30,0, 10)
+				ValueBox_1.Size = UDim2.new(0, 30,0, 15)
 				ValueBox_1.Font = Enum.Font.GothamBold
 				ValueBox_1.PlaceholderColor3 = Color3.fromRGB(178,178,178)
 				ValueBox_1.PlaceholderText = ""
@@ -2631,11 +2644,11 @@ function Fetching:Window(info)
 						wait(0.1 / steps)
 						currentValue = currentValue + (targetValue - startValue) / steps
 						ValueBox_1.Text = tostring(roundToDecimal(currentValue, Rounding))
-						ValueBox_1.Size = UDim2.new(0, ValueBox_1.TextBounds.X + 20, 0, 20)
+						ValueBox_1.Size = UDim2.new(0, ValueBox_1.TextBounds.X + 20, 0, 15)
 					end
 
 					ValueBox_1.Text = tostring(roundToDecimal(targetValue, Rounding))
-					ValueBox_1.Size = UDim2.new(0, ValueBox_1.TextBounds.X + 20, 0, 20)
+					ValueBox_1.Size = UDim2.new(0, ValueBox_1.TextBounds.X + 20, 0, 15)
 
 					Callback(value)
 				end
