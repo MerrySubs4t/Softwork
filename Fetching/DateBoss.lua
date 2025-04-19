@@ -18,5 +18,5 @@ return {
 	["Auto Darkbeard"] = { Boss = "Darkbeard", hop = "HOP Darkbeard", world = "w2" },
 	["Auto HallowScythe"] = { Boss = "Soul Reaper", hop = "HOP HallowScythe", world = "w3" },
 	["Indra"] = { Boss = "rip_indra True Form", hop = "HOP Indra", world = "w3" },
-	["Tyrant"] = { Boss = "Tyrant of the Skypies", hop = "HOP Tyrant", world = "w3" },
+	["Tyrant"] = { Boss = "Tyrant of the Skies", hop = "HOP Tyrant", world = "w3" },
 }
