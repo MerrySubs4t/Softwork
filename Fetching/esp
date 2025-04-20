@@ -1,3 +1,6 @@
+round = function(n)
+	return math.floor(tonumber(n) + 0.5)
+end
 return function(meta)
 	local v = meta.Instance
 	local title = meta.Name or v.Name
