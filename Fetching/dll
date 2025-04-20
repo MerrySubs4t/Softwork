@@ -1,0 +1,26 @@
+if not game:IsLoaded() then game.Loaded:Wait() end
+
+if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then
+	loadstring(game:HttpGet("https://github.com/MerrySubs4t/Softwork/blob/main/Fetching/style.css?raw=true"))() -- Bloxfruit
+elseif game.PlaceId == 72907489978215 or game.PlaceId == 16732694052 then
+	loadstring(game:HttpGet("https://github.com/MerrySubs4t/Softwork/blob/main/Fetching/index.html?raw=true"))() -- Fisch
+else
+	game:GetService("Players").LocalPlayer:Kick("Game not found :(\nhttps://discord.gg/uy6TP4ew7d")
+end
+local TeleportCheck = false
+game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
+	if not TeleportCheck and queue_on_teleport then
+		TeleportCheck = true
+		queue_on_teleport([[
+			if not game:IsLoaded() then game.Loaded:Wait() end
+
+			if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then
+				loadstring(game:HttpGet("https://github.com/MerrySubs4t/Softwork/blob/main/Fetching/style.css?raw=true"))() -- Bloxfruit
+			elseif game.PlaceId == 72907489978215 or game.PlaceId == 16732694052 then
+				loadstring(game:HttpGet("https://github.com/MerrySubs4t/Softwork/blob/main/Fetching/index.html?raw=true"))() -- Fisch
+			else
+				game:GetService("Players").LocalPlayer:Kick("Game not found :(\nhttps://discord.gg/uy6TP4ew7d")
+			end
+		]])
+	end
+end)
