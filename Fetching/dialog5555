@@ -210,8 +210,8 @@ function Dialog:Create(info)
 	local click1 = click(but_1)
 
 	click1.MouseButton1Click:Connect(function()
-		callback1()
 		WindowG_L:Destroy()
+                callback1()
 	end)
 
 	but_1.Name = "but"
@@ -246,8 +246,8 @@ function Dialog:Create(info)
 	local click2 = click(b2_1)
 	
 	click2.MouseButton1Click:Connect(function()
+                WindowG_L:Destroy()
 		callback2()
-		WindowG_L:Destroy()
 	end)
 
 	b2_1.Name = "b2"
