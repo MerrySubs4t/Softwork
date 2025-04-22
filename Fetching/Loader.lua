@@ -1,6 +1,3 @@
-if not game:IsLoaded() then game.Loaded:Wait() end
-if getgenv().Fetching then return error("Script already running!") end
-
 local PLACE_SCRIPTS = {
     [2753915549] = "Bloxfruits",
     [4442272183] = "Bloxfruits",
