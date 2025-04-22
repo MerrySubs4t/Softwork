@@ -22,7 +22,7 @@ translate = function(en, th)
 	end 
 end
 
-Dialog = loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/Fetching/dialog5555"))()
+Dialog = loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/Fetching/Framework/dialog5555"))()
 
 th = 'ตรวจพบ "ไฟล์บันทึกการตั้งค่า" คุณต้องการลบ "ไฟล์บันทึกการตั้งค่า" รึป่าว\nคำเตือน : หากคุณลบ "ไฟล์บันทึกการตั้งค่า" การตั้งค่าจะถูกรีเซ็ตเป็นค่าเริ่มต้นทั้งหมด\nเช่น คุณเปิดการย้ายเซิฟหาบอสตัวใดตัวหนึ่งแล้วคุณลบการตั้งค่า มันก็จะถูกรีเซ็ตเป็นหรือปิดทันที'
 en = '"Settings Log File" has been detected. Do you want to delete "Settings Log File" ?Warning: If you delete the "Settings Log File", all settings will be reset to their default values.For example, if you enabled server hopping to find a specific boss and you delete the settings, it will be reset or disabled.'
