@@ -26,7 +26,6 @@ Dialog = loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/
 
 th = 'ตรวจพบ "ไฟล์บันทึกการตั้งค่า" คุณต้องการลบ "ไฟล์บันทึกการตั้งค่า" รึป่าว\nคำเตือน : หากคุณลบ "ไฟล์บันทึกการตั้งค่า" การตั้งค่าจะถูกรีเซ็ตเป็นค่าเริ่มต้นทั้งหมด\nเช่น คุณเปิดการย้ายเซิฟหาบอสตัวใดตัวหนึ่งแล้วคุณลบการตั้งค่า มันก็จะถูกรีเซ็ตเป็นหรือปิดทันที'
 en = '"Settings Log File" has been detected. Do you want to delete "Settings Log File" ?Warning: If you delete the "Settings Log File", all settings will be reset to their default values.For example, if you enabled server hopping to find a specific boss and you delete the settings, it will be reset or disabled.'
-local oneload = false
 if isfolder("Fetching'Script") then
 	Dialog:Create({
 		title = "Fetching's Script",
@@ -34,27 +33,18 @@ if isfolder("Fetching'Script") then
 		titleb1 = translate("Remove", "ลบการตั้งค่า"),
 		titleb2 = translate("Ignore", "ไม่สนใจ"),
 		UpperCallback = function()
-			if not oneload then
 				if isfolder("Fetching'Script") then
 					delfolder("Fetching'Script")
 				end
 				wait(1)
 				LoadGame()
-				oneload=true
-			end
 		end,
 		LowerCallback = function()
-			if not oneload then
 				LoadGame()
-				oneload=true
-			end
 		end,
 	})
 else
-	if not oneload then
 		LoadGame()
-		oneload=true
-	end
 end
 
 local TeleportCheck = false
