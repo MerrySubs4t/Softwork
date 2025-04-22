@@ -4,6 +4,7 @@ task.delay(2, function()
 		end)
 		hookfunction(require(Service.ReplicatedStorage.Effect.Container.Respawn), function()
 		end)
+		hookfunction(require(game:GetService("ReplicatedStorage").Effect.Container.RaceAwakenings.CyborgDrone), function() end)
 		hookfunction(require(Service.ReplicatedStorage:WaitForChild("GuideModule")).ChangeDisplayedNPC, function()
 			return
 		end)
