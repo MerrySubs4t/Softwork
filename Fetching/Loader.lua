@@ -6,9 +6,9 @@ end
 
 function LoadGame()
 	if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then
-		loadstring(game:HttpGet("https://github.com/MerrySubs4t/Softwork/blob/main/Fetching/style.css?raw=true"))() -- Bloxfruit
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/Fetching/_index/Bloxfruits"))() -- Bloxfruit
 	elseif game.PlaceId == 72907489978215 or game.PlaceId == 16732694052 then
-		loadstring(game:HttpGet("https://github.com/MerrySubs4t/Softwork/blob/main/Fetching/index.html?raw=true"))() -- Fisch
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/Fetching/_index/Fisch"))() -- Fisch
 	else
 		game:GetService("Players").LocalPlayer:Kick("Game not found :(\nhttps://discord.gg/uy6TP4ew7d")
 	end
@@ -65,9 +65,9 @@ game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
 			if not game:IsLoaded() then game.Loaded:Wait() end
 
 			if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then
-				loadstring(game:HttpGet("https://github.com/MerrySubs4t/Softwork/blob/main/Fetching/style.css?raw=true"))() -- Bloxfruit
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/Fetching/_index/Bloxfruits"))() -- Bloxfruit
 			elseif game.PlaceId == 72907489978215 or game.PlaceId == 16732694052 then
-				loadstring(game:HttpGet("https://github.com/MerrySubs4t/Softwork/blob/main/Fetching/index.html?raw=true"))() -- Fisch
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/MerrySubs4t/Softwork/refs/heads/main/Fetching/_index/Fisch"))() -- Fisch
 			else
 				game:GetService("Players").LocalPlayer:Kick("Game not found :(\nhttps://discord.gg/uy6TP4ew7d")
 			end
