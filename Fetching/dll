@@ -3,6 +3,7 @@ local PLACE_SCRIPTS = {
     [4442272183] = "Bloxfruits",
     [7449423635] = "Bloxfruits",
     [16732694052] = "Fisch",
+    [72907489978215] = "Fisch",
 }
 
 function LoadGame()
