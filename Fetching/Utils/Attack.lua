@@ -1,12 +1,22 @@
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local LocalPlayer = Players.LocalPlayer
+local Enemies = workspace:WaitForChild("Enemies")
+local Net = ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Net")
+
 return function()
-	for _, v in next, workspace.Enemies:GetChildren() do
-		if v.Humanoid.Health > 0 and v:FindFirstChild("HumanoidRootPart") and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= tonumber(60) then
-			game:GetService("ReplicatedStorage").Modules.Net["RE/RegisterAttack"]:FireServer(0)
+	for _, v in ipairs(Enemies:GetChildren()) do
+		local hrp = v:FindFirstChild("HumanoidRootPart")
+		local hum = v:FindFirstChild("Humanoid")
+		if hum and hum.Health > 0 and hrp and (hrp.Position - LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 60 then
+			Net["RE/RegisterAttack"]:FireServer(0)
+
 			local args = {
-				[1] = v:FindFirstChild("HumanoidRootPart"),
+				[1] = hrp,
 				[2] = {}
 			}
-			for _, e in next, workspace:WaitForChild("Enemies"):GetChildren() do
+
+			for _, e in ipairs(Enemies:GetChildren()) do
 				if e:FindFirstChild("Humanoid") and e.Humanoid.Health > 0 then
 					table.insert(args[2], {
 						[1] = e,
@@ -14,7 +24,8 @@ return function()
 					})
 				end
 			end
-			game:GetService("ReplicatedStorage").Modules.Net["RE/RegisterHit"]:FireServer(unpack(args))
+
+			Net["RE/RegisterHit"]:FireServer(unpack(args))
 		end
 	end
 end
