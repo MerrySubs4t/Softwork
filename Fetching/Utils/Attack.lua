@@ -6,6 +6,25 @@ local Net = ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Net")
 local RegisterHit = Net:WaitForChild("RE/RegisterHit")
 local RegisterAttack = Net:WaitForChild("RE/RegisterAttack")
 
+local PlayerScripts = game.Players.LocalPlayer:WaitForChild("PlayerScripts")
+local LocalScript = PlayerScripts:FindFirstChildOfClass("LocalScript")
+
+task.defer(function()
+
+	while not LocalScript do
+		game.Players.LocalPlayer.PlayerScripts.ChildAdded:Wait()
+		LocalScript = PlayerScripts:FindFirstChildOfClass("LocalScript")
+	end
+
+	if getsenv then
+		local Success, ScriptEnv = pcall(getsenv, LocalScript)
+
+		if Success and ScriptEnv then
+			HIT_FUNCTION = ScriptEnv._G.SendHitsToServer
+		end
+	end
+end)
+
 return function()
 	pcall(function()
 		for _, enemy in ipairs(workspace.Enemies:GetChildren()) do
