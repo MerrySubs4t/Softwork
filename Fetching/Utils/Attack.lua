@@ -1,93 +1,36 @@
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local LocalPlayer = Players.LocalPlayer
 
+local Net = ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Net")
+local RegisterHit = Net:WaitForChild("RE/RegisterHit")
+local RegisterAttack = Net:WaitForChild("RE/RegisterAttack")
 
-local env = (getgenv or getrenv or getfenv)()
-local rs = game:GetService("ReplicatedStorage")
-local players = game:GetService("Players")
-local client = players.LocalPlayer
-local modules = rs:WaitForChild("Modules")
-local net = modules:WaitForChild("Net")
-local charFolder = workspace:WaitForChild("Characters")
-local enemyFolder = workspace:WaitForChild("Enemies")
-
-local Module = {
-	AttackCooldown = tick()
-}
-local CachedChars = {}
-
-function Module.IsAlive(Char: Model?): boolean
-	if not Char then return nil end
-	local Hum = CachedChars[Char] or Char:FindFirstChildOfClass("Humanoid")
-	if Hum then
-		CachedChars[Char] = Hum
-		return Hum.Health > 0
-	end
-	return false
-end
-
-local HIT_FUNCTION; task.defer(function()
-	local PlayerScripts = client:WaitForChild("PlayerScripts")
-	local LocalScript = PlayerScripts:FindFirstChildOfClass("LocalScript")
-
-	while not LocalScript do
-		client.PlayerScripts.ChildAdded:Wait()
-		LocalScript = PlayerScripts:FindFirstChildOfClass("LocalScript")
-	end
-
-	if getsenv then
-		local Success, ScriptEnv = pcall(getsenv, LocalScript)
-
-		if Success and ScriptEnv then
-			HIT_FUNCTION = ScriptEnv._G.SendHitsToServer
-		end
-	end
-end)
-
-local AttackModule = {
-	NextAttack = 0,
-	Distance = 70,
-	attackMobs = true,
-	attackPlayers = true
-}
-
-local RegisterAttack = net:WaitForChild("RE/RegisterAttack")
-local RegisterHit = net:WaitForChild("RE/RegisterHit")
-
-function AttackModule:AttackEnemy(EnemyHead, Table)
-	if EnemyHead and client:DistanceFromCharacter(EnemyHead.Position) < self.Distance then
-		if HIT_FUNCTION then 
-			HIT_FUNCTION(EnemyHead, Table or {})
-		else
-			RegisterHit:FireServer(EnemyHead, Table or {})
-		end
-		RegisterAttack:FireServer(0)
-	end
-end
-
-function AttackModule:AttackNearest()
-	local args = {nil, {}}
-	for _, Enemy in ipairs(enemyFolder:GetChildren()) do
-		local humanoidPart = Enemy:FindFirstChild("HumanoidRootPart")
-		if humanoidPart and client:DistanceFromCharacter(humanoidPart.Position) < self.Distance then
-			local upperHead = Enemy:FindFirstChild("HumanoidRootPart")
-			if not args[1] then
-				args[1] = upperHead
-			else
-				table.insert(args[2], {Enemy, upperHead})
+return function()
+	pcall(function()
+		for _, enemy in ipairs(workspace.Enemies:GetChildren()) do
+			local hum = enemy:FindFirstChild("Humanoid")
+			local root = enemy:FindFirstChild("HumanoidRootPart")
+			if hum and hum.Health > 0 and root and (root.Position - LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 60 then
+				local args = {
+					[1] = root,
+					[2] = {}
+				}
+				for _, e in ipairs(workspace.Enemies:GetChildren()) do
+					if e:FindFirstChild("Humanoid") and e.Humanoid.Health > 0 then
+						table.insert(args[2], {
+							[1] = e,
+							[2] = e:FindFirstChild("HumanoidRootPart") or e:FindFirstChildOfClass("BasePart")
+						})
+					end
+				end
+				if HIT_FUNCTION then
+					HIT_FUNCTION(root, args[2])
+				else
+					RegisterHit:FireServer(unpack(args))
+				end
+				RegisterAttack:FireServer(0)
 			end
 		end
-	end
-
-	self:AttackEnemy(unpack(args))
-
-	for _, Char in ipairs(charFolder:GetChildren()) do
-		if Char ~= client.Character then
-			self:AttackEnemy(Char:FindFirstChild("HumanoidRootPart"))
-		end
-	end
+	end)
 end
-
-function AttackModule:BladeHits()
-	self:AttackNearest()
-end
-
-return function() AttackModule:BladeHits() end
