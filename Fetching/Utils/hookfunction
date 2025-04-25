@@ -5,8 +5,12 @@ task.delay(2, function()
 		hookfunction(require(Service.ReplicatedStorage.Effect.Container.Respawn), function()
 		end)
 		hookfunction(require(game:GetService("ReplicatedStorage").Effect.Container.RaceAwakenings.CyborgDrone), function() end)
-		hookfunction(require(Service.ReplicatedStorage:WaitForChild("GuideModule")).ChangeDisplayedNPC, function()
+		hookfunction(require(game:GetService("ReplicatedStorage").ReplicatedStorage:WaitForChild("GuideModule")).ChangeDisplayedNPC, function()
 			return
 		end)
+	end
+	if require then
+		local Camera = require(game:GetService("ReplicatedStorage").Util.CameraShaker)
+		Camera:Stop()
 	end
 end)
