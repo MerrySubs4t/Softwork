@@ -90,4 +90,4 @@ function AttackModule:BladeHits()
 	self:AttackNearest()
 end
 
-return AttackModule:BladeHits()
+return function() AttackModule:BladeHits() end
