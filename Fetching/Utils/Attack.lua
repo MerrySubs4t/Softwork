@@ -42,62 +42,52 @@ local HIT_FUNCTION; task.defer(function()
 	end
 end)
 
-Module.FastAttack = (function()
-	if env._trash_attack then 
-		return function() env._trash_attack:BladeHits() end
+local AttackModule = {
+	NextAttack = 0,
+	Distance = 70,
+	attackMobs = true,
+	attackPlayers = true
+}
+
+local RegisterAttack = net:WaitForChild("RE/RegisterAttack")
+local RegisterHit = net:WaitForChild("RE/RegisterHit")
+
+function AttackModule:AttackEnemy(EnemyHead, Table)
+	if EnemyHead and client:DistanceFromCharacter(EnemyHead.Position) < self.Distance then
+		if HIT_FUNCTION then 
+			HIT_FUNCTION(EnemyHead, Table or {})
+		else
+			RegisterHit:FireServer(EnemyHead, Table or {})
+		end
+		RegisterAttack:FireServer(0)
 	end
+end
 
-	local AttackModule = {
-		NextAttack = 0,
-		Distance = 70,
-		attackMobs = true,
-		attackPlayers = true
-	}
-
-	local RegisterAttack = net:WaitForChild("RE/RegisterAttack")
-	local RegisterHit = net:WaitForChild("RE/RegisterHit")
-
-	function AttackModule:AttackEnemy(EnemyHead, Table)
-		if EnemyHead and client:DistanceFromCharacter(EnemyHead.Position) < self.Distance then
-			if HIT_FUNCTION then 
-				HIT_FUNCTION(EnemyHead, Table or {})
+function AttackModule:AttackNearest()
+	local args = {nil, {}}
+	for _, Enemy in ipairs(enemyFolder:GetChildren()) do
+		local humanoidPart = Enemy:FindFirstChild("HumanoidRootPart")
+		if humanoidPart and client:DistanceFromCharacter(humanoidPart.Position) < self.Distance then
+			local upperHead = Enemy:FindFirstChild("HumanoidRootPart")
+			if not args[1] then
+				args[1] = upperHead
 			else
-				RegisterHit:FireServer(EnemyHead, Table or {})
-			end
-			RegisterAttack:FireServer(0)
-		end
-	end
-
-	function AttackModule:AttackNearest()
-		local args = {nil, {}}
-		for _, Enemy in ipairs(enemyFolder:GetChildren()) do
-			local humanoidPart = Enemy:FindFirstChild("HumanoidRootPart")
-			if humanoidPart and client:DistanceFromCharacter(humanoidPart.Position) < self.Distance then
-				local upperHead = Enemy:FindFirstChild("HumanoidRootPart")
-				if not args[1] then
-					args[1] = upperHead
-				else
-					table.insert(args[2], {Enemy, upperHead})
-				end
-			end
-		end
-
-		self:AttackEnemy(unpack(args))
-
-		for _, Char in ipairs(charFolder:GetChildren()) do
-			if Char ~= client.Character then
-				self:AttackEnemy(Char:FindFirstChild("HumanoidRootPart"))
+				table.insert(args[2], {Enemy, upperHead})
 			end
 		end
 	end
 
-	function AttackModule:BladeHits()
-		self:AttackNearest()
-	end
+	self:AttackEnemy(unpack(args))
 
-	env._trash_attack = AttackModule
-
-	return function()
-		AttackModule:BladeHits()
+	for _, Char in ipairs(charFolder:GetChildren()) do
+		if Char ~= client.Character then
+			self:AttackEnemy(Char:FindFirstChild("HumanoidRootPart"))
+		end
 	end
-end)()
+end
+
+function AttackModule:BladeHits()
+	self:AttackNearest()
+end
+
+return AttackModule:BladeHits()
