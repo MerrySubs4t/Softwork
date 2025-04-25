@@ -1,4 +1,8 @@
 task.delay(2, function()
+        if require then
+		local Camera = require(game:GetService("ReplicatedStorage").Util.CameraShaker)
+		Camera:Stop()
+	end
 	if hookfunction and not islclosure(hookfunction) then
 		hookfunction(require(game:GetService("ReplicatedStorage").Effect.Container.Death), function()
 		end)
@@ -8,9 +12,5 @@ task.delay(2, function()
 		hookfunction(require(game:GetService("ReplicatedStorage").ReplicatedStorage:WaitForChild("GuideModule")).ChangeDisplayedNPC, function()
 			return
 		end)
-	end
-	if require then
-		local Camera = require(game:GetService("ReplicatedStorage").Util.CameraShaker)
-		Camera:Stop()
 	end
 end)
