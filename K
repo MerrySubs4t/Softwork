@@ -43,8 +43,8 @@ task.defer(function()
     end
 end)
 
-local RegisterAttack = net:WaitForChild("RE"):WaitForChild("RegisterAttack")
-    local RegisterHit = net:WaitForChild("RE"):WaitForChild("RegisterHit")
+local RegisterAttack = net:WaitForChild("RE/RegisterAttack")
+    local RegisterHit = net:WaitForChild("RE/RegisterHit")
 
 return function()
     task.spawn(function()
