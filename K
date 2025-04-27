@@ -1,0 +1,93 @@
+local env = (getgenv or getrenv or getfenv)()
+local rs = game:GetService("ReplicatedStorage")
+local players = game:GetService("Players")
+local client = players.LocalPlayer
+local modules = rs:WaitForChild("Modules")
+local net = modules:WaitForChild("Net")
+local charFolder = workspace:WaitForChild("Characters")
+local enemyFolder = workspace:WaitForChild("Enemies")
+
+local CachedChars = {}
+local HIT_FUNCTION
+
+local Settings = {
+    ClickDelay = 0.01,
+    AutoClick = true,
+    Distance = 70
+}
+
+function IsAlive(Char)
+    if not Char then return false end
+    local Hum = CachedChars[Char] or Char:FindFirstChildOfClass("Humanoid")
+    if Hum then
+        CachedChars[Char] = Hum
+        return Hum.Health > 0
+    end
+    return false
+end
+
+task.defer(function()
+    local PlayerScripts = client:WaitForChild("PlayerScripts")
+    local LocalScript = PlayerScripts:FindFirstChildOfClass("LocalScript")
+
+    while not LocalScript do
+        client.PlayerScripts.ChildAdded:Wait()
+        LocalScript = PlayerScripts:FindFirstChildOfClass("LocalScript")
+    end
+
+    if getsenv then
+        local success, scriptEnv = pcall(getsenv, LocalScript)
+        if success and scriptEnv and scriptEnv._G and scriptEnv._G.SendHitsToServer then
+            HIT_FUNCTION = scriptEnv._G.SendHitsToServer
+        end
+    end
+end)
+
+local RegisterAttack = net:WaitForChild("RE"):WaitForChild("RegisterAttack")
+    local RegisterHit = net:WaitForChild("RE"):WaitForChild("RegisterHit")
+
+return function()
+    task.spawn(function()
+        while task.wait(Settings.ClickDelay) do
+            if not Settings.AutoClick then continue end
+            if not IsAlive(client.Character) then continue end
+            if not client.Character:FindFirstChildOfClass("Tool") then continue end
+
+            local args = {nil, {}}
+
+            for _, Enemy in ipairs(enemyFolder:GetChildren()) do
+                local root = Enemy:FindFirstChild("HumanoidRootPart")
+                if root and client:DistanceFromCharacter(root.Position) < Settings.Distance then
+                    if not args[1] then
+                        args[1] = root
+                    else
+                        table.insert(args[2], {Enemy, root})
+                    end
+                end
+            end
+
+            if args[1] then
+                if HIT_FUNCTION then
+                    HIT_FUNCTION(args[1], args[2])
+                else
+                    RegisterHit:FireServer(args[1], args[2])
+                end
+                RegisterAttack:FireServer(0)
+            end
+
+            for _, Char in ipairs(charFolder:GetChildren()) do
+                if Char ~= client.Character then
+                    local root = Char:FindFirstChild("HumanoidRootPart")
+                    if root and client:DistanceFromCharacter(root.Position) < Settings.Distance then
+                        if HIT_FUNCTION then
+                            HIT_FUNCTION(root, {})
+                        else
+                            RegisterHit:FireServer(root, {})
+                        end
+                        RegisterAttack:FireServer(0)
+                    end
+                end
+            end
+        end
+    end)
+end
