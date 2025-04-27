@@ -1,93 +1,56 @@
-local env = (getgenv or getrenv or getfenv)()
-local rs = game:GetService("ReplicatedStorage")
-local players = game:GetService("Players")
-local client = players.LocalPlayer
-local modules = rs:WaitForChild("Modules")
-local net = modules:WaitForChild("Net")
-local charFolder = workspace:WaitForChild("Characters")
-local enemyFolder = workspace:WaitForChild("Enemies")
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local LocalPlayer = Players.LocalPlayer
 
-local CachedChars = {}
-local HIT_FUNCTION
+local Net = ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Net")
+local RegisterHit = Net:WaitForChild("RE/RegisterHit")
+local RegisterAttack = Net:WaitForChild("RE/RegisterAttack")
 
-local Settings = {
-    ClickDelay = 0.01,
-    AutoClick = true,
-    Distance = 70
-}
-
-function IsAlive(Char)
-    if not Char then return false end
-    local Hum = CachedChars[Char] or Char:FindFirstChildOfClass("Humanoid")
-    if Hum then
-        CachedChars[Char] = Hum
-        return Hum.Health > 0
-    end
-    return false
+local PlayerScripts = LocalPlayer:WaitForChild("PlayerScripts")
+local LocalScript = PlayerScripts:FindFirstChildOfClass("LocalScript")
+while not LocalScript do
+	LocalPlayer.PlayerScripts.ChildAdded:Wait()
+	LocalScript = PlayerScripts:FindFirstChildOfClass("LocalScript")
 end
 
-task.defer(function()
-    local PlayerScripts = client:WaitForChild("PlayerScripts")
-    local LocalScript = PlayerScripts:FindFirstChildOfClass("LocalScript")
-
-    while not LocalScript do
-        client.PlayerScripts.ChildAdded:Wait()
-        LocalScript = PlayerScripts:FindFirstChildOfClass("LocalScript")
-    end
-
-    if getsenv then
-        local success, scriptEnv = pcall(getsenv, LocalScript)
-        if success and scriptEnv and scriptEnv._G and scriptEnv._G.SendHitsToServer then
-            HIT_FUNCTION = scriptEnv._G.SendHitsToServer
-        end
-    end
-end)
-
-local RegisterAttack = net:WaitForChild("RE/RegisterAttack")
-    local RegisterHit = net:WaitForChild("RE/RegisterHit")
+local HIT_FUNCTION
+if getsenv then
+	pcall(function()
+		local Success, ScriptEnv = pcall(getsenv, LocalScript)
+		if Success and ScriptEnv then
+			HIT_FUNCTION = ScriptEnv._G.SendHitsToServer
+		end
+	end)
+end
 
 return function()
-    task.spawn(function()
-        while task.wait(Settings.ClickDelay) do
-            if not Settings.AutoClick then continue end
-            if not IsAlive(client.Character) then continue end
-            if not client.Character:FindFirstChildOfClass("Tool") then continue end
+	pcall(function()
+		local Character = LocalPlayer.Character
+		if not Character or not Character:FindFirstChild("HumanoidRootPart") then return end
 
-            local args = {nil, {}}
+		local Enemies = workspace.Enemies:GetChildren()
+		for _, enemy in ipairs(Enemies) do
+			local hum = enemy:FindFirstChild("Humanoid")
+			local root = enemy:FindFirstChild("HumanoidRootPart")
+			if hum and root and hum.Health > 0 and (root.Position - Character.HumanoidRootPart.Position).Magnitude <= 60 then
+				local targets = {}
+				for _, e in ipairs(Enemies) do
+					local eh = e:FindFirstChild("Humanoid")
+					local eroot = e:FindFirstChild("HumanoidRootPart") or e:FindFirstChildOfClass("BasePart")
+					if eh and eroot and eh.Health > 0 then
+						table.insert(targets, {e, eroot})
+					end
+				end
 
-            for _, Enemy in ipairs(enemyFolder:GetChildren()) do
-                local root = Enemy:FindFirstChild("HumanoidRootPart")
-                if root and client:DistanceFromCharacter(root.Position) < Settings.Distance then
-                    if not args[1] then
-                        args[1] = root
-                    else
-                        table.insert(args[2], {Enemy, root})
-                    end
-                end
-            end
+				if HIT_FUNCTION then
+					HIT_FUNCTION(root, targets)
+				else
+					RegisterHit:FireServer(root, targets)
+				end
+				RegisterAttack:FireServer(0)
 
-            if args[1] then
-                if HIT_FUNCTION then
-                    HIT_FUNCTION(args[1], args[2])
-                else
-                    RegisterHit:FireServer(args[1], args[2])
-                end
-                RegisterAttack:FireServer(0)
-            end
-
-            for _, Char in ipairs(charFolder:GetChildren()) do
-                if Char ~= client.Character then
-                    local root = Char:FindFirstChild("HumanoidRootPart")
-                    if root and client:DistanceFromCharacter(root.Position) < Settings.Distance then
-                        if HIT_FUNCTION then
-                            HIT_FUNCTION(root, {})
-                        else
-                            RegisterHit:FireServer(root, {})
-                        end
-                        RegisterAttack:FireServer(0)
-                    end
-                end
-            end
-        end
-    end)
+				task.wait() -- กันเกมกระตุก
+			end
+		end
+	end)
 end
