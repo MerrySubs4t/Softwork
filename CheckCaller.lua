@@ -11,7 +11,7 @@ end
 
 VerifyEnemie = function(v)
 	if type(v) == 'string' then
-		return (Enemies:FindFirstChild(v) and Enemies:FindFirstChild(v).Health >= 0) or (ReplicatedStorage:FindFirstChild(v) and ReplicatedStorage:FindFirstChild(v).Health >= 0)
+		return (Enemies:FindFirstChild(v) and Enemies:FindFirstChild(v).Humanoid.Health >= 0) or (ReplicatedStorage:FindFirstChild(v) and ReplicatedStorage:FindFirstChild(v).Humanoid.Health >= 0)
 	end
 end
 
