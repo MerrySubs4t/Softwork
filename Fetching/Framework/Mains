@@ -832,12 +832,12 @@ function Fetching:Window(info)
 				else
 					Selected_1.Text = Value
 				end
-				
+
 				local UIGD = Instance.new("UIGradient")
 				UIGD.Rotation = 90
 				UIGD.Parent = Selected_1
 				UIGD.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, MainColor), ColorSequenceKeypoint.new(1, DropColor)}
-				
+
 				Selected_1.TextColor3 = Color3.fromRGB(255,255,255)
 				Selected_1.TextSize = 8
 				Selected_1.TextTransparency = 0
@@ -867,7 +867,7 @@ function Fetching:Window(info)
 				ImageLabel_1.Position = UDim2.new(0.970000029, 0,0.5, 0)
 				ImageLabel_1.Size = UDim2.new(0, 17,0, 17)
 				ImageLabel_1.Image = "rbxassetid://129573215183311"
-				
+
 				local UIGD = Instance.new("UIGradient")
 				UIGD.Rotation = 90
 				UIGD.Parent = ImageLabel_1
@@ -1045,6 +1045,14 @@ function Fetching:Window(info)
 								d = "Out",
 								g = {Rotation = 0}
 							}):Play()
+							tw({
+								v = DropdownSelect,
+								t = 0.15,
+								s = "Bounce",
+								d = "Out",
+								g = {Size = UDim2.new(0, 0, 0, 0)}
+							}):Play()
+							task.wait(0.05)
 							DropdownSelect.Visible = false
 						end
 					end
@@ -1082,6 +1090,13 @@ function Fetching:Window(info)
 							d = "Out",
 							g = {Rotation = 90}
 						}):Play()
+						tw({
+							v = DropdownSelect,
+							t = 0.15,
+							s = "Bounce",
+							d = "Out",
+							g = {Size = UDim2.new(0.5, 0,0, 250)}
+						}):Play()
 						task.wait(0.05)
 						DropdownSelect.Visible = true
 					else
@@ -1091,6 +1106,13 @@ function Fetching:Window(info)
 							s = "Exponential",
 							d = "Out",
 							g = {Rotation = 0}
+						}):Play()
+						tw({
+							v = DropdownSelect,
+							t = 0.15,
+							s = "Bounce",
+							d = "Out",
+							g = {Size = UDim2.new(0, 0, 0, 0)}
 						}):Play()
 						task.wait(0.07)
 						DropdownSelect.Visible = false
@@ -1294,7 +1316,13 @@ function Fetching:Window(info)
 								d = "Out",
 								g = {BackgroundTransparency = 0.3}
 							}):Play()
-
+							tw({
+								v = DropdownSelect,
+								t = 0.15,
+								s = "Bounce",
+								d = "Out",
+								g = {Size = UDim2.new(0, 0, 0, 0)}
+							}):Play()
 							task.wait(0.07)
 							DropdownSelect.Visible = false
 							isOpen = false
@@ -1533,7 +1561,7 @@ function Fetching:Window(info)
 				ToggleO_1.BorderSizePixel = 0
 				ToggleO_1.LayoutOrder = 1
 				ToggleO_1.Size = UDim2.new(0, 20,0, 20)
-				
+
 				local UIGD = Instance.new("UIGradient")
 				UIGD.Rotation = 0
 				UIGD.Parent = ToggleO_1
@@ -1733,7 +1761,7 @@ function Fetching:Window(info)
 				ToggleO_1.LayoutOrder = 1
 				ToggleO_1.Size = UDim2.new(0, 20,0, 20)
 				ToggleO_1.AnchorPoint = Vector2.new(0.5,0.5)
-				
+
 				local UIGD = Instance.new("UIGradient")
 				UIGD.Rotation = 0
 				UIGD.Parent = ToggleO_1
@@ -2060,7 +2088,7 @@ function Fetching:Window(info)
 				Inside_1.Position = UDim2.new(0.5, 0,0.5, 0)
 				Inside_1.Size = UDim2.new(0.95, 0,1, 0)
 				Inside_1.ClipsDescendants = true
-				
+
 				local b = click(Inside_1)
 				b.MouseButton1Click:Connect(function()
 					ButtoneffectClick(b, Inside_1)
@@ -2136,7 +2164,7 @@ function Fetching:Window(info)
 				ImageID_1x.Position = UDim2.new(0.18, 0,0.5, 0)
 				ImageID_1x.Size = UDim2.new(0, 35,0, 35)
 				ImageID_1x.Image = Icon
-				
+
 				local ImageLabel_1 = Instance.new("ImageLabel")
 				ImageLabel_1.Parent = Inside_1
 				ImageLabel_1.AnchorPoint = Vector2.new(1, 0.5)
@@ -2586,11 +2614,11 @@ function Fetching:Window(info)
 				ValueLine.BorderSizePixel = 0
 				ValueLine.Position = UDim2.new(1, 0,0.5, 0)
 				ValueLine.Size = UDim2.new(0, 8,0, 8)
-				
+
 				sks.Parent = ValueLine
 				sks.Color = Color3.fromRGB(255, 255, 255)
 				sks.Thickness = 2.5
-				
+
 				gr.Parent = sks
 				gr.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, MainColor), ColorSequenceKeypoint.new(1, DropColor)}
 				gr.Rotation = 180
@@ -3537,4 +3565,5 @@ function Fetching:Window(info)
 	end
 	return Fetching.Tab
 end
+
 return Fetching
